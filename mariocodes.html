@@ -1,1941 +1,1942 @@
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Printable LEGO Mario Scanner Codes</title>
-<style>
+  <title>Printable LEGO Mario Scanner Codes</title>
+  <style>
+    .G {
+      color: #229551;
+    }
 
-.G {
-	color: #229551;
-}
+    .R {
+      color: #cb2129;
+    }
 
-.R {
-	color: #cb2129;
-}
+    .B {
+      color: #0000ff;
+    }
 
-.B {
-	color: #0000ff;
-}
+    .L {
+      color: #aed252;
+    }
 
-.L {
-	color: #aed252;
-}
+    .P {
+      color: #d166a7;
+    }
 
-.P {
-	color: #d166a7;
-}
+    .V {
+      color: #9b78b5;
+    }
 
-.V {
-	color: #9b78b5;
-}
+    .Y {
+      color: #f9dc2a;
+    }
 
-.Y {
-	color: #f9dc2a;
-}
+    .T {
+      color: #1baaa3;
+    }
 
-.T {
-	color: #1baaa3;
-}
+    #codelist {
+      display: flex;
+      flex-wrap: wrap;
+    }
 
-#codelist {
-	display: flex;
-	flex-wrap: wrap;
-}
+    .codeblock {
+      display: flex;
+      vertical-align: top;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid black;
+      flex-basis: 33%;
+    }
 
-.codeblock {
-	display: flex;
-	vertical-align: top;
-	margin-top: 20px;
-	padding-top: 10px;
-	border-top:1px solid black;
-	flex-basis:33%;
-}
+    .code_svg_caption {
+      display: inline-block;
+      vertical-align: top;
+    }
 
-.code_svg_caption {
-	display: inline-block;
-	vertical-align:top;
-}
+    .code_description {
+      display: inline-block;
+    }
 
-.code_description {
-	display:inline-block;
-}
+    #todo {
+      display: none;
+    }
 
-#todo {
-	display:none;
-}
-
-@media (max-width: 800px) {
-  .codeblock {
-    flex: 100%;
-  }
-}
-</style>
+    @media (max-width: 800px) {
+      .codeblock {
+        flex: 100%;
+      }
+    }
+  </style>
 
 </head>
+
 <body>
-<h1>LEGO Mario Codes</h1>
+  <h1>LEGO Mario Codes</h1>
 
-<h3>Structure</h3>
-Each LEGO Mario barcode consists of five unique colors that are then repeated as a sequence:
-<ul>
-<li class="G">Green</li>
-<li class="R">Red</li>
-<li class="B">Blue</li>
-<li class="L">Lime</li>
-<li class="P">Pink</li>
-<li class="V">Violet</li>
-<li class="Y">Yellow</li>
-<li class="T">Teal</li>
-</ul>
+  <h3>Structure</h3>
+  Each LEGO Mario barcode consists of five unique colors that are then repeated as a sequence:
+  <ul>
+    <li class="G">Green</li>
+    <li class="R">Red</li>
+    <li class="B">Blue</li>
+    <li class="L">Lime</li>
+    <li class="P">Pink</li>
+    <li class="V">Violet</li>
+    <li class="Y">Yellow</li>
+    <li class="T">Teal</li>
+  </ul>
 
-The barcode always seems to start with Green and Red on an edge, so the last three are the only significant ones.
+  The barcode always seems to start with Green and Red on an edge, so the last three are the only significant ones.
 
-<hr>
-<div id='todo'>
-TODO
-<ul>
-<li>Put JS functions in a file for utility
-<li>Check/uncheck all in section
-<li>Load inline or separately for SVG (might not be possible) and JSON
-<li>Test in Firefox in Windows (two birds, one stone)
-<li>When printing from iOS, how to rotate the paper and remove the stuff at the bottom?
-</ul>
-</div>
-Select codes you want and print them at the bottom of the page.
+  <hr>
+  <div id='todo'>
+    TODO
+    <ul>
+      <li>Put JS functions in a file for utility
+      <li>Check/uncheck all in section
+      <li>Load inline or separately for SVG (might not be possible) and JSON
+      <li>Test in Firefox in Windows (two birds, one stone)
+      <li>When printing from iOS, how to rotate the paper and remove the stuff at the bottom?
+    </ul>
+  </div>
+  Select codes you want and print them at the bottom of the page.
 
-<script>
-if ( window.location.search == '?itsame' ) {
-	document.getElementById('todo').style.display = 'inline';
-}
-var database_data = {
-  "notes": [
-    "8 colors: GREEN, RED, BLUE, LIME, PINK, VIOLET, YELLOW, TEAL",
-    "5 Positions",
-    "Start with GR or BR",
-    "GR Codespace is 512 with prefix (8^3) (not accounting for no-repeats or uniques,, narrows to 120 (6*5*4))",
-    "Searched Bricklink on November 10, 2022 and found 196 parts matching 'scanner code'",
-    "Sources:",
-    "https://www.reddit.com/r/lego/comments/iaahnr/lego_mario_barcode_coloring_list/",
-    "https://studioplayfool.medium.com/can-you-play-with-lego-super-mario-without-lego-551f74dfcd77",
-    "Some colors corrected or confirmed by @SzczepanStaszak's (on Twitter) TUGtLSM_v0.9.pdf",
-    "Version 2 added label for labeling auto-generated scanner codes (8 char limit, Use caps)",
-    "Version 3 added optional codeguess for undeciphered codes (THE GUESSED CODE HAS TO ACTUALLY WORK) (blpn, name, note, codeguess)",
-    "Version 4 added unidentified section",
-    "Version 5 added optional use text",
-    "Version 6 added provisional label to unidentified",
-    "Version 7 first codes starting with BR show up",
-    "Copyright (c) 2021-2022, mutesplash"
-  ],
-  "version": 7,
-  "codes": [
-    {
-      "code": "GRLBV",
-      "label": "START",
-      "blpns": [
-        {
-          "blpn": "3068bpb1380",
-          "name": "Start"
-        }
+  <script>
+    if (window.location.search == '?itsame') {
+      document.getElementById('todo').style.display = 'inline';
+    }
+    var database_data = {
+      "notes": [
+        "8 colors: GREEN, RED, BLUE, LIME, PINK, VIOLET, YELLOW, TEAL",
+        "5 Positions",
+        "Start with GR or BR",
+        "GR Codespace is 512 with prefix (8^3) (not accounting for no-repeats or uniques,, narrows to 120 (6*5*4))",
+        "Searched Bricklink on November 10, 2022 and found 196 parts matching 'scanner code'",
+        "Sources:",
+        "https://www.reddit.com/r/lego/comments/iaahnr/lego_mario_barcode_coloring_list/",
+        "https://studioplayfool.medium.com/can-you-play-with-lego-super-mario-without-lego-551f74dfcd77",
+        "Some colors corrected or confirmed by @SzczepanStaszak's (on Twitter) TUGtLSM_v0.9.pdf",
+        "Version 2 added label for labeling auto-generated scanner codes (8 char limit, Use caps)",
+        "Version 3 added optional codeguess for undeciphered codes (THE GUESSED CODE HAS TO ACTUALLY WORK) (blpn, name, note, codeguess)",
+        "Version 4 added unidentified section",
+        "Version 5 added optional use text",
+        "Version 6 added provisional label to unidentified",
+        "Version 7 first codes starting with BR show up",
+        "Copyright (c) 2021-2022, mutesplash"
       ],
-      "note": "60 second start: Mario starter set"
-    },
-    {
-      "code": "GRTVL",
-      "label": "START2",
-      "blpns": [
+      "version": 7,
+      "codes": [
         {
-          "blpn": "3068bpb1802",
-          "name": "Start 60 (Luigi)"
-        }
-      ],
-      "note": "60 second start: Luigi starter set"
-    },
-    {
-      "code": "BRVYG",
-      "label": "START3",
-      "blpns": [
-        {
-          "blpn": "3068bpb2093",
-          "name": "Start 60 (Peach)"
-        }
-      ],
-      "note": "60-second start: Peach starter set"
-    },
-    {
-      "code": "GRVPL",
-      "label": "START 30",
-      "blpns": [
-        {
-          "blpn": "3068bpb1483",
-          "name": "Start 30"
-        }
-      ],
-      "note": "30 second start"
-    },
-    {
-      "code": "GRVLP",
-      "label": "STARTC50",
-      "blpns": [
-        {
-          "blpn": "3068bpb1954",
-          "name": "50-coin Start"
-        }
-      ],
-      "note": "Collect 50 coins to complete.  Fail if you scan the goal code"
-    },
-    {
-      "code": "BRVTG",
-      "label": "START 80",
-      "blpns": [
-        {
-          "blpn": "3068bpb2060",
-          "name": "Peach castle start"
-        }
-      ]
-    },
-    {
-      "code": "GRTBP",
-      "label": "START 90",
-      "blpns": [
-        {
-          "blpn": "3068bpb1962",
-          "name": "Cannon Start 90"
-        }
-      ],
-      "note": "90 second start. Won't start until you pull upwards.  Ominimous music plays"
-    },
-    {
-      "code": "BRPGL",
-      "label": "SSTART90",
-      "blpns": [
-        {
-          "blpn": "3068bpb1972",
-          "name": "Spooky Start 90"
-        }
-      ],
-      "note": "90 second start. Luigi's Mansion Start"
-    },
-    {
-      "code": "GRYBV",
-      "label": "YOSHI",
-      "blpns": [
-        {
-          "blpn": "3068bpb1385",
-          "name": "Speech Bubble Yoshi"
-        }
-      ]
-    },
-    {
-      "code": "GRPLT",
-      "label": "TOAD",
-      "blpns": [
-        {
-          "blpn": "3068bpb1402",
-          "name": "Speech Bubble Toad"
+          "code": "GRLBV",
+          "label": "START",
+          "blpns": [
+            {
+              "blpn": "3068bpb1380",
+              "name": "Start"
+            }
+          ],
+          "note": "60 second start: Mario starter set"
         },
         {
-          "blpn": "3068bpb2053",
-          "name": "Purple & Yellow Toad / Toadette Speech Bubble"
-        }
-      ]
-    },
-    {
-      "code": "GRPBY",
-      "label": "TOADETTE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1401",
-          "name": "Speech Bubble Toadette"
-        }
-      ]
-    },
-    {
-      "code": "GRLPB",
-      "label": "TOAD 2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1957",
-          "name": "Blue Toad"
-        }
-      ],
-      "note": "Shows Heart. Will also lock a player if they sit on the code too long after doing a spooky start."
-    },
-    {
-      "code": "BRPGY",
-      "label": "DORRIE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1985",
-          "name": "Dorrie"
-        }
-      ]
-    },
-    {
-      "code": "BRPTY",
-      "label": "DOLPHIN",
-      "blpns": [
-        {
-          "blpn": "3068bpb1979",
-          "name": "Dolphin"
-        }
-      ],
-      "note": "Plays music.  Rideable"
-    },
-    {
-      "code": "BRYGT",
-      "label": "BABYOSHI",
-      "blpns": [
-        {
-          "blpn": "3068bpb2064",
-          "name": "Chubby Baby Yoshi, yellow"
-        }
-      ]
-    },
-    {
-      "code": "GRTPV",
-      "label": "YOSHIEGG",
-      "blpns": [
-        {
-          "blpn": "3068bpb1807",
-          "name": "Pink Yoshi egg"
-        }
-      ],
-      "note": "Hop on Yoshi. Yoshi looks purple on the display, pink when viewed off-axis"
-    },
-    {
-      "code": "BRPLY",
-      "label": "YOSHI E2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1977",
-          "name": "Yellow Yoshi egg"
-        }
-      ]
-    },
-    {
-      "code": "BRYTV",
-      "label": "YOSHI E3",
-      "blpns": [
-        {
-          "blpn": "3068bpb2065",
-          "name": "Red Yoshi egg"
-        }
-      ]
-    },
-    {
-      "code": "BRYPL",
-      "label": "YOSHI E4",
-      "blpns": [
-        {
-          "blpn": "3068bpb2072",
-          "name": "Green Yoshi egg"
-        }
-      ]
-    },
-    {
-      "code": "GRYPV",
-      "label": "POLTER",
-      "blpns": [
-        {
-          "blpn": "3068bpb1983",
-          "name": "Polterpup"
-        }
-      ]
-    },
-    {
-      "code": "GRVLY",
-      "label": "GOLDBONE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1981",
-          "name": "Golden bone"
-        }
-      ],
-      "note": "Give to Polterpup"
-    },
-    {
-      "code": "BRPYV",
-      "label": "EGADD",
-      "blpns": [
-        {
-          "blpn": "3068bpb1986",
-          "name": "Professor E. Gadd"
-        }
-      ]
-    },
-    {
-      "code": "GRVYT",
-      "label": "BPENGUIN",
-      "blpns": [
-        {
-          "blpn": "3068bpb1909",
-          "name": "Baby penguin"
-        }
-      ]
-    },
-    {
-      "code": "BRYPV",
-      "label": "NABBIT",
-      "blpns": [
-        {
-          "blpn": "3068bpb2063",
-          "name": "Nabbit"
-        }
-      ],
-      "note": "Gives random item or coins when removed from the code"
-    },
-    {
-      "code": "GRPBV",
-      "label": "1 BLOCK",
-      "blpns": [
-        {
-          "blpn": "3068bpb1404",
-          "name": "1 Block Treasure"
-        }
-      ]
-    },
-    {
-      "code": "GRPYV",
-      "label": "2 BLOCK",
-      "blpns": [
-        {
-          "blpn": "3068bpb1405",
-          "name": "2 Block Treasure"
-        }
-      ]
-    },
-    {
-      "code": "GRVPY",
-      "label": "3 BLOCK",
-      "blpns": [
-        {
-          "blpn": "3068bpb1406",
-          "name": "3 Block Treasure"
-        }
-      ]
-    },
-    {
-      "code": "BRPYL",
-      "label": "GEM PURP",
-      "blpns": [
-        {
-          "blpn": "3068bpb1968",
-          "name": "Purple diamond"
-        }
-      ]
-    },
-    {
-      "code": "BRPVL",
-      "label": "GEM BLUE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1967",
-          "name": "Blue diamond"
-        }
-      ]
-    },
-    {
-      "code": "BRPTL",
-      "label": "GEM GREE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1969",
-          "name": "Green diamond"
-        }
-      ]
-    },
-    {
-      "code": "GRYLP",
-      "label": "RED C1",
-      "blpns": [
-        {
-          "blpn": "3068bpb1485",
-          "name": "Red Coin Block Rounded (green tile)"
+          "code": "GRTVL",
+          "label": "START2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1802",
+              "name": "Start 60 (Luigi)"
+            }
+          ],
+          "note": "60 second start: Luigi starter set"
         },
         {
-          "blpn": "3068bpb1970",
-          "name": "Red Coin Block Rounded"
-        }
-      ]
-    },
-    {
-      "code": "GRYPL",
-      "label": "RED C2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1487",
-          "name": "Red Coin Block Triange (green tile)"
+          "code": "BRVYG",
+          "label": "START3",
+          "blpns": [
+            {
+              "blpn": "3068bpb2093",
+              "name": "Start 60 (Peach)"
+            }
+          ],
+          "note": "60-second start: Peach starter set"
         },
         {
-          "blpn": "11203pb082",
-          "name": "Red Coin Block Triangle"
-        }
-      ]
-    },
-    {
-      "code": "GRYLB",
-      "label": "RED C3",
-      "blpns": [
-        {
-          "blpn": "3068bpb1486",
-          "name": "Red Coin Block Square (green tile)"
+          "code": "GRVPL",
+          "label": "START 30",
+          "blpns": [
+            {
+              "blpn": "3068bpb1483",
+              "name": "Start 30"
+            }
+          ],
+          "note": "30 second start"
         },
         {
-          "blpn": "3068bpb1971",
-          "name": "Red Coin Block Square"
-        }
-      ]
-    },
-    {
-      "code": "BRYPT",
-      "label": "GOLDGROW",
-      "blpns": [
-        {
-          "blpn": "3068bpb2071",
-          "name": "Treat Carousel"
-        }
-      ],
-      "note": "Rotate after picking up a fruit to coat it with gold. Can also coat the cake."
-    },
-    {
-      "code": "BRYLP",
-      "label": "PRESENT",
-      "blpns": [
-        {
-          "blpn": "3068bpb2095",
-          "name": "Gift box 1"
-        }
-      ]
-    },
-    {
-      "code": "BRYGV",
-      "label": "PRESENT2",
-      "blpns": [
-        {
-          "blpn": "3068bpb2070",
-          "name": "Gift box 2"
-        }
-      ],
-      "note": "Fruit or cake will fit in a gift box"
-    },
-    {
-      "code": "BRYVL",
-      "label": "CAKE",
-      "blpns": [
-        {
-          "blpn": "11203pb088",
-          "name": "Cake slice"
-        }
-      ],
-      "note": "Along with fruit, this can be coated in gold with the Treat Carousel.  Golden cake and fruit can also be burnt or wrapped in a present."
-    },
-    {
-      "code": "BRYGL",
-      "label": "FRUIT PR",
-      "blpns": [
-        {
-          "blpn": "14769pb550",
-          "name": "Purple Fruit"
-        }
-      ],
-      "note": "Fruit can be given to yoshi: plays music and says 'for you', or 'you're welcome'"
-    },
-    {
-      "code": "BRYLT",
-      "label": "FRUIT GR",
-      "blpns": [
-        {
-          "blpn": "14769pb551",
-          "name": "Green Fruit"
-        }
-      ],
-      "note": "Fruit can be burnt or poisoned if standing on a red or purple brick for two ticks.  Tastes bad to whoever eats it."
-    },
-    {
-      "code": "BRYVT",
-      "label": "FRUIT RE",
-      "blpns": [
-        {
-          "blpn": "14769pb546",
-          "name": "Red Fruit"
-        }
-      ],
-      "note": "Fruit can be put in a gift box"
-    },
-    {
-      "code": "BRYTL",
-      "label": "FRUIT YL",
-      "blpns": [
-        {
-          "blpn": "14769pb556",
-          "name": "Yellow Fruit"
-        }
-      ],
-      "note": "Fruit can be eaten by making a tipping motion"
-    },
-    {
-      "code": "GRYPT",
-      "label": "SUPER",
-      "blpns": [
-        {
-          "blpn": "14769pb338",
-          "name": "Super Mushroom"
-        }
-      ]
-    },
-    {
-      "code": "GRTYB",
-      "label": "1-UP",
-      "blpns": [
-        {
-          "blpn": "14769pb454",
-          "name": "1-Up"
-        }
-      ],
-      "note": "Plays the 1-Up sound and shows the green mushroom"
-    },
-    {
-      "code": "GRYBP",
-      "label": "POW",
-      "blpns": [
-        {
-          "blpn": "3068bpb1361",
-          "name": "POW"
-        }
-      ]
-    },
-    {
-      "code": "GRPBL",
-      "label": "POISON",
-      "blpns": [
-        {
-          "blpn": "14769pb379",
-          "name": "Poison Mushroom"
-        }
-      ]
-    },
-    {
-      "code": "GRVBY",
-      "label": "STAR",
-      "blpns": [
-        {
-          "blpn": "3068bpb1384",
-          "name": "Star"
-        }
-      ]
-    },
-    {
-      "code": "GRBTP",
-      "label": "TIMER",
-      "blpns": [
-        {
-          "blpn": "3068bpb1347",
-          "name": "Timer"
-        }
-      ],
-      "note": "Add 30 seconds"
-    },
-    {
-      "code": "GRTLP",
-      "label": "TIMER 2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1855",
-          "name": "Timer 2"
-        }
-      ],
-      "note": "Add 30 seconds"
-    },
-    {
-      "code": "BRYTP",
-      "label": "TIMER 3",
-      "blpns": [
-        {
-          "blpn": "3068bpb2083",
-          "name": "Timer 3"
-        }
-      ],
-      "note": "Add 30 seconds"
-    },
-    {
-      "code": "GRPYB",
-      "label": "? BLOCK",
-      "blpns": [
-        {
-          "blpn": "3068bpb1359",
-          "name": "Mystery Block ?"
-        }
-      ]
-    },
-    {
-      "code": "GRVTB",
-      "label": "P?BLOCK1",
-      "blpns": [
-        {
-          "blpn": "3068bpb1762",
-          "name": "Customization Mystery Block 1"
-        }
-      ],
-      "note": "Set 71380",
-      "use": "Select the powerup BEFORE start by twisting mario on code as shown by arrows.  Choose mushroom, poison mushroom, 10 coins, or star.  Lift to save."
-    },
-    {
-      "code": "GRVTP",
-      "label": "P?BLOCK2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1784",
-          "name": "Customization Mystery Block 2"
-        }
-      ],
-      "note": "Set 71380",
-      "use": "Select the powerup BEFORE start by twisting mario on code as shown by arrows.  Choose mushroom, poison mushroom, 10 coins, or star.  Lift to save."
-    },
-    {
-      "code": "GRVTY",
-      "label": "TIMEGEAR",
-      "blpns": [
-        {
-          "blpn": "3068bpb1533",
-          "name": "Customization Time Block"
-        }
-      ],
-      "note": "Set 71380."
-    },
-    {
-      "code": "GRYBL",
-      "label": "P SWITCH",
-      "blpns": [
-        {
-          "blpn": "3068bpb1394",
-          "name": "P Switch"
-        }
-      ]
-    },
-    {
-      "code": "GRLPT",
-      "label": "COIN 1",
-      "blpns": [
-        {
-          "blpn": "3068bpb1387",
-          "name": "Coin"
+          "code": "GRVLP",
+          "label": "STARTC50",
+          "blpns": [
+            {
+              "blpn": "3068bpb1954",
+              "name": "50-coin Start"
+            }
+          ],
+          "note": "Collect 50 coins to complete.  Fail if you scan the goal code"
         },
         {
-          "blpn": "11203pb083",
-          "name": "Coin"
-        }
-      ]
-    },
-    {
-      "code": "GRYTP",
-      "label": "COIN 2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1393",
-          "name": "Coin 2"
-        }
-      ]
-    },
-    {
-      "code": "GRPYL",
-      "label": "COIN 3",
-      "blpns": [
-        {
-          "blpn": "3068bpb1527",
-          "name": "Coin 3"
+          "code": "BRVTG",
+          "label": "START 80",
+          "blpns": [
+            {
+              "blpn": "3068bpb2060",
+              "name": "Peach castle start"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb2079",
-          "name": "Coin 3"
-        }
-      ]
-    },
-    {
-      "code": "GRVPT",
-      "label": "GHOST",
-      "blpns": [
-        {
-          "blpn": "14769pb339",
-          "name": "Peepa"
+          "code": "GRTBP",
+          "label": "START 90",
+          "blpns": [
+            {
+              "blpn": "3068bpb1962",
+              "name": "Cannon Start 90"
+            }
+          ],
+          "note": "90 second start. Won't start until you pull upwards.  Ominimous music plays"
         },
         {
-          "blpn": "3068bpb1409",
-          "name": "Boo"
-        }
-      ],
-      "note": "Vacuum (4-hit)"
-    },
-    {
-      "code": "GRTVY",
-      "label": "BOO",
-      "blpns": [
-        {
-          "blpn": "3068bpb1799",
-          "name": "Boo"
-        }
-      ]
-    },
-    {
-      "code": "BRYPG",
-      "label": "GRBG GHO",
-      "blpns": [
-        {
-          "blpn": "3068bpb1973",
-          "name": "Garbage can ghost"
-        }
-      ],
-      "note": "Vacuum or use star"
-    },
-    {
-      "code": "BRPLT",
-      "label": "GRBGHOST",
-      "blpns": [
-        {
-          "blpn": "3068bpb1974",
-          "name": "Grabbing ghost"
-        }
-      ],
-      "note": "Vacuum or use star"
-    },
-    {
-      "code": "BRPTV",
-      "label": "GLDGHOST",
-      "blpns": [
-        {
-          "blpn": "14769pb514",
-          "name": "Golden ghost"
-        }
-      ],
-      "note": "Vacuum or use star"
-    },
-    {
-      "code": "GRTPY",
-      "label": "BOGMIRE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1984",
-          "name": "Bogmire"
-        }
-      ],
-      "note": "Vacuum (10-hit) or use star"
-    },
-    {
-      "code": "GRBPV",
-      "label": "SHY GUY",
-      "blpns": [
-        {
-          "blpn": "14769pb341",
-          "name": "Shy Guy"
-        }
-      ]
-    },
-    {
-      "code": "GRBPY",
-      "label": "GOOMBA",
-      "blpns": [
-        {
-          "blpn": "3068bpb1381",
-          "name": "Goomba"
+          "code": "BRPGL",
+          "label": "SSTART90",
+          "blpns": [
+            {
+              "blpn": "3068bpb1972",
+              "name": "Spooky Start 90"
+            }
+          ],
+          "note": "90 second start. Luigi's Mansion Start"
         },
         {
-          "blpn": "3068bpb1505",
-          "name": "Bone Goomba"
+          "code": "GRYBV",
+          "label": "YOSHI",
+          "blpns": [
+            {
+              "blpn": "3068bpb1385",
+              "name": "Speech Bubble Yoshi"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1501",
-          "name": "Ninji"
+          "code": "GRPLT",
+          "label": "TOAD",
+          "blpns": [
+            {
+              "blpn": "3068bpb1402",
+              "name": "Speech Bubble Toad"
+            },
+            {
+              "blpn": "3068bpb2053",
+              "name": "Purple & Yellow Toad / Toadette Speech Bubble"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1348",
-          "name": "Bullet Bill"
+          "code": "GRPBY",
+          "label": "TOADETTE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1401",
+              "name": "Speech Bubble Toadette"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1360",
-          "name": "Monty Mole"
+          "code": "GRLPB",
+          "label": "TOAD 2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1957",
+              "name": "Blue Toad"
+            }
+          ],
+          "note": "Shows Heart. Will also lock a player if they sit on the code too long after doing a spooky start."
         },
         {
-          "blpn": "14769pb368",
-          "name": "Fly Guy"
+          "code": "BRPGY",
+          "label": "DORRIE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1985",
+              "name": "Dorrie"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1365",
-          "name": "Fuzzy"
+          "code": "BRPTY",
+          "label": "DOLPHIN",
+          "blpns": [
+            {
+              "blpn": "3068bpb1979",
+              "name": "Dolphin"
+            }
+          ],
+          "note": "Plays music.  Rideable"
         },
         {
-          "blpn": "3068bpb1520",
-          "name": "Foo"
+          "code": "BRYGT",
+          "label": "BABYOSHI",
+          "blpns": [
+            {
+              "blpn": "3068bpb2064",
+              "name": "Chubby Baby Yoshi, yellow"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1904",
-          "name": "Crowber"
+          "code": "GRTPV",
+          "label": "YOSHIEGG",
+          "blpns": [
+            {
+              "blpn": "3068bpb1807",
+              "name": "Pink Yoshi egg"
+            }
+          ],
+          "note": "Hop on Yoshi. Yoshi looks purple on the display, pink when viewed off-axis"
         },
         {
-          "blpn": "3068bpb1915",
-          "name": "Para-Biddybud"
+          "code": "BRPLY",
+          "label": "YOSHI E2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1977",
+              "name": "Yellow Yoshi egg"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1499",
-          "name": "Parachute Goomba"
+          "code": "BRYTV",
+          "label": "YOSHI E3",
+          "blpns": [
+            {
+              "blpn": "3068bpb2065",
+              "name": "Red Yoshi egg"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1916",
-          "name": "Scaredy Rat"
+          "code": "BRYPL",
+          "label": "YOSHI E4",
+          "blpns": [
+            {
+              "blpn": "3068bpb2072",
+              "name": "Green Yoshi egg"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb2096",
-          "name": "Cat Goomba"
+          "code": "GRYPV",
+          "label": "POLTER",
+          "blpns": [
+            {
+              "blpn": "3068bpb1983",
+              "name": "Polterpup"
+            }
+          ]
         },
         {
-          "blpn": "14769pb548",
-          "name": "Shy Guy"
+          "code": "GRVLY",
+          "label": "GOLDBONE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1981",
+              "name": "Golden bone"
+            }
+          ],
+          "note": "Give to Polterpup"
         },
         {
-          "blpn": "3068bpb2054",
-          "name": "Toady"
+          "code": "BRPYV",
+          "label": "EGADD",
+          "blpns": [
+            {
+              "blpn": "3068bpb1986",
+              "name": "Professor E. Gadd"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1798",
-          "name": "Swoop"
+          "code": "GRVYT",
+          "label": "BPENGUIN",
+          "blpns": [
+            {
+              "blpn": "3068bpb1909",
+              "name": "Baby penguin"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1932",
-          "name": "Stingby"
+          "code": "BRYPV",
+          "label": "NABBIT",
+          "blpns": [
+            {
+              "blpn": "3068bpb2063",
+              "name": "Nabbit"
+            }
+          ],
+          "note": "Gives random item or coins when removed from the code"
         },
         {
-          "blpn": "3068bpb1905",
-          "name": "Galoomba"
+          "code": "GRPBV",
+          "label": "1 BLOCK",
+          "blpns": [
+            {
+              "blpn": "3068bpb1404",
+              "name": "1 Block Treasure"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1888",
-          "name": "Goombrat"
+          "code": "GRPYV",
+          "label": "2 BLOCK",
+          "blpns": [
+            {
+              "blpn": "3068bpb1405",
+              "name": "2 Block Treasure"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1908",
-          "name": "Ant Trooper"
+          "code": "GRVPY",
+          "label": "3 BLOCK",
+          "blpns": [
+            {
+              "blpn": "3068bpb1406",
+              "name": "3 Block Treasure"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb2062",
-          "name": "Waddlewing"
+          "code": "BRPYL",
+          "label": "GEM PURP",
+          "blpns": [
+            {
+              "blpn": "3068bpb1968",
+              "name": "Purple diamond"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1797",
-          "name": "Scuttlebug"
-        }
-      ]
-    },
-    {
-      "code": "GRBYV",
-      "label": "THWIMP",
-      "blpns": [
-        {
-          "blpn": "3068bpb1524",
-          "name": "Thwimp"
-        }
-      ]
-    },
-    {
-      "code": "GRYBT",
-      "label": "BRAMBALL",
-      "blpns": [
-        {
-          "blpn": "3068bpb1526",
-          "name": "Bramball"
-        }
-      ]
-    },
-    {
-      "code": "GRVYP",
-      "label": "BLOOPER",
-      "blpns": [
-        {
-          "blpn": "3068bpb1363",
-          "name": "Blooper"
+          "code": "BRPVL",
+          "label": "GEM BLUE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1967",
+              "name": "Blue diamond"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1413",
-          "name": "Urchin"
+          "code": "BRPTL",
+          "label": "GEM GREE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1969",
+              "name": "Green diamond"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1403",
-          "name": "Cheep Cheep"
+          "code": "GRYLP",
+          "label": "RED C1",
+          "blpns": [
+            {
+              "blpn": "3068bpb1485",
+              "name": "Red Coin Block Rounded (green tile)"
+            },
+            {
+              "blpn": "3068bpb1970",
+              "name": "Red Coin Block Rounded"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1349",
-          "name": "Eep Cheep"
+          "code": "GRYPL",
+          "label": "RED C2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1487",
+              "name": "Red Coin Block Triange (green tile)"
+            },
+            {
+              "blpn": "11203pb082",
+              "name": "Red Coin Block Triangle"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1500",
-          "name": "Huckit Crab"
+          "code": "GRYLB",
+          "label": "RED C3",
+          "blpns": [
+            {
+              "blpn": "3068bpb1486",
+              "name": "Red Coin Block Square (green tile)"
+            },
+            {
+              "blpn": "3068bpb1971",
+              "name": "Red Coin Block Square"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1521",
-          "name": "Spiny Cheep Cheep"
+          "code": "BRYPT",
+          "label": "GOLDGROW",
+          "blpns": [
+            {
+              "blpn": "3068bpb2071",
+              "name": "Treat Carousel"
+            }
+          ],
+          "note": "Rotate after picking up a fruit to coat it with gold. Can also coat the cake."
         },
         {
-          "blpn": "3068bpb1796",
-          "name": "Torpedo Ted"
-        }
-      ]
-    },
-    {
-      "code": "GRPVY",
-      "label": "BUZZY",
-      "blpns": [
-        {
-          "blpn": "3068bpb1519",
-          "name": "Para-Beetle"
+          "code": "BRYLP",
+          "label": "PRESENT",
+          "blpns": [
+            {
+              "blpn": "3068bpb2095",
+              "name": "Gift box 1"
+            }
+          ]
         },
         {
-          "blpn": "3068bpb1415",
-          "name": "Buzzy Beetle"
+          "code": "BRYGV",
+          "label": "PRESENT2",
+          "blpns": [
+            {
+              "blpn": "3068bpb2070",
+              "name": "Gift box 2"
+            }
+          ],
+          "note": "Fruit or cake will fit in a gift box"
         },
         {
-          "blpn": "3068bpb1364",
-          "name": "Spiny"
+          "code": "BRYVL",
+          "label": "CAKE",
+          "blpns": [
+            {
+              "blpn": "11203pb088",
+              "name": "Cake slice"
+            }
+          ],
+          "note": "Along with fruit, this can be coated in gold with the Treat Carousel.  Golden cake and fruit can also be burnt or wrapped in a present."
         },
         {
-          "blpn": "3068bpb1964",
-          "name": "Mechakoopa"
+          "code": "BRYGL",
+          "label": "FRUIT PR",
+          "blpns": [
+            {
+              "blpn": "14769pb550",
+              "name": "Purple Fruit"
+            }
+          ],
+          "note": "Fruit can be given to yoshi: plays music and says 'for you', or 'you're welcome'"
         },
         {
-          "blpn": "3068bpb1907",
-          "name": "Bony Beetle"
-        }
-      ]
-    },
-    {
-      "code": "GRPTB",
-      "label": "CHOMP",
-      "blpns": [
-        {
-          "blpn": "11203pb064",
-          "name": "Chain Chomp"
-        }
-      ]
-    },
-    {
-      "code": "GRBVY",
-      "label": "DRY BONE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1408",
-          "name": "Dry Bones"
+          "code": "BRYLT",
+          "label": "FRUIT GR",
+          "blpns": [
+            {
+              "blpn": "14769pb551",
+              "name": "Green Fruit"
+            }
+          ],
+          "note": "Fruit can be burnt or poisoned if standing on a red or purple brick for two ticks.  Tastes bad to whoever eats it."
         },
         {
-          "blpn": "3068bpb1414",
-          "name": "Paragoomba"
+          "code": "BRYVT",
+          "label": "FRUIT RE",
+          "blpns": [
+            {
+              "blpn": "14769pb546",
+              "name": "Red Fruit"
+            }
+          ],
+          "note": "Fruit can be put in a gift box"
         },
         {
-          "blpn": "3068bpb1397",
-          "name": "Lava Bubble"
-        }
-      ]
-    },
-    {
-      "code": "GRVLB",
-      "label": "AMP",
-      "blpns": [
-        {
-          "blpn": "3068bpb1801",
-          "name": "Amp"
-        }
-      ],
-      "note": "Electrocutes and causes spinning eyes without star power"
-    },
-    {
-      "code": "BRPVG",
-      "label": "FREEZIE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1914",
-          "name": "Freezie"
-        }
-      ],
-      "note": "Freezes the character"
-    },
-    {
-      "code": "GRBPT",
-      "label": "WHOMP",
-      "blpns": [
-        {
-          "blpn": "3068bpb1396",
-          "name": "Whomp"
-        }
-      ],
-      "note": "NOT Thwomp (this guy falls on his face)"
-    },
-    {
-      "code": "GRPTY",
-      "label": "LAVA",
-      "blpns": [
-        {
-          "blpn": "3068bpb1410",
-          "name": "Lava Bubble"
-        }
-      ]
-    },
-    {
-      "code": "GRPTL",
-      "label": "THWOMP",
-      "blpns": [
-        {
-          "blpn": "3068bpb1407",
-          "name": "Thwomp"
-        }
-      ]
-    },
-    {
-      "code": "GRVBL",
-      "label": "BOB-OMB",
-      "blpns": [
-        {
-          "blpn": "3068bpb1476",
-          "name": "Bob-Omb 1"
-        }
-      ]
-    },
-    {
-      "code": "GRBYT",
-      "label": "BOMB 2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1366",
-          "name": "Bob-Omb 2"
-        }
-      ]
-    },
-    {
-      "code": "BRPLV",
-      "label": "BOMB 3",
-      "blpns": [
-        {
-          "blpn": "3068bpb1883",
-          "name": "Bob-omb"
-        }
-      ]
-    },
-    {
-      "code": "GRTVP",
-      "label": "PARABOMB",
-      "blpns": [
-        {
-          "blpn": "3068bpb1795",
-          "name": "Parachute Bob-omb"
-        }
-      ]
-    },
-    {
-      "code": "GRVPB",
-      "label": "PIRANHA",
-      "blpns": [
-        {
-          "blpn": "3068bpb1382",
-          "name": "Piranha Plant"
-        }
-      ]
-    },
-    {
-      "code": "GRYTL",
-      "label": "KOOPA 1",
-      "blpns": [
-        {
-          "blpn": "3068bpb1383",
-          "name": "Koopa Troopa"
-        }
-      ]
-    },
-    {
-      "code": "GRPTV",
-      "label": "KOOPA 2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1351",
-          "name": "Koopa Troopa 2"
-        }
-      ]
-    },
-    {
-      "code": "GRBTL",
-      "label": "KPARAT 1",
-      "blpns": [
-        {
-          "blpn": "3068bpb1477",
-          "name": "Koopa Paratroopa"
-        }
-      ]
-    },
-    {
-      "code": "GRYVT",
-      "label": "KPARAT 2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1478",
-          "name": "Koopa Paratroopa 2"
-        }
-      ]
-    },
-    {
-      "code": "GRVBP",
-      "label": "EXPLODE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1386",
-          "name": "Swoop Explosion"
-        }
-      ]
-    },
-    {
-      "code": "BRYTG",
-      "label": "EXPLODE2",
-      "blpns": [
-        {
-          "blpn": "68869pb010",
-          "name": "Big Spike Explosion"
-        }
-      ],
-      "note": "Hit animation, Launching sound and 'go go go'"
-    },
-    {
-      "code": "GRYVP",
-      "label": "STONE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1362",
-          "name": "Stone Eye"
-        }
-      ]
-    },
-    {
-      "code": "GRYVL",
-      "label": "POKEY",
-      "blpns": [
-        {
-          "blpn": "3068bpb1369",
-          "name": "Pokey"
-        }
-      ],
-      "note": "App has it as the V being P, which is wrong."
-    },
-    {
-      "code": "BRPVY",
-      "label": "BIG URCH",
-      "blpns": [
-        {
-          "blpn": "3068bpb1978",
-          "name": "Purple Urchin"
-        }
-      ],
-      "note": "Not normally stompable"
-    },
-    {
-      "code": "BRPYG",
-      "label": "BULLY",
-      "blpns": [
-        {
-          "blpn": "3068bpb1910",
-          "name": "Bully"
-        }
-      ],
-      "note": "Have to do a flip before stomping for coins"
-    },
-    {
-      "code": "GRYLT",
-      "label": "LAKITU",
-      "blpns": [
-        {
-          "blpn": "3068bpb1856",
-          "name": "Lakitu"
-        }
-      ],
-      "note": "2-hit"
-    },
-    {
-      "code": "GRTYV",
-      "label": "ROCKY",
-      "blpns": [
-        {
-          "blpn": "3068bpb1959",
-          "name": "Rocky Wrench"
-        }
-      ],
-      "note": "3-hit"
-    },
-    {
-      "code": "BRPTG",
-      "label": "COINCOFF",
-      "blpns": [
-        {
-          "blpn": "3068bpb1911",
-          "name": "Coin Coffer"
-        }
-      ],
-      "note": "3-hit"
-    },
-    {
-      "code": "GRTYP",
-      "label": "GRRROL",
-      "blpns": [
-        {
-          "blpn": "3068bpb1955",
-          "name": "Grrrol"
+          "code": "BRYTL",
+          "label": "FRUIT YL",
+          "blpns": [
+            {
+              "blpn": "14769pb556",
+              "name": "Yellow Fruit"
+            }
+          ],
+          "note": "Fruit can be eaten by making a tipping motion"
         },
         {
-          "blpn": "3068bpb2075",
-          "name": "Piranha Plant"
-        }
-      ],
-      "note": "3-hit"
-    },
-    {
-      "code": "BRVYP",
-      "label": "BIG GOOM",
-      "blpns": [
-        {
-          "blpn": "3068bpb2076",
-          "name": "Big Goomba"
-        }
-      ],
-      "note": "3-hit"
-    },
-    {
-      "code": "BRYGP",
-      "label": "BIGKOOPA",
-      "blpns": [
-        {
-          "blpn": "3068bpb2078",
-          "name": "Big Koopa"
-        }
-      ],
-      "note": "3-hit"
-    },
-    {
-      "code": "BRVTP",
-      "label": "BOOMRBRO",
-      "blpns": [
-        {
-          "blpn": "3068bpb2073",
-          "name": "Boomerang Bro"
-        }
-      ],
-      "note": "4-hit"
-    },
-    {
-      "code": "BRVLP",
-      "label": "HAMMRBRO",
-      "blpns": [
-        {
-          "blpn": "3068bpb2055",
-          "name": "Hammer Bro"
-        }
-      ],
-      "note": "4-hit"
-    },
-    {
-      "code": "GRTLV",
-      "label": "KAMEK",
-      "blpns": [
-        {
-          "blpn": "11203pb079",
-          "name": "Kamek"
-        }
-      ],
-      "note": "4-hit"
-    },
-    {
-      "code": "BRYVP",
-      "label": "BIGSPIKE",
-      "blpns": [
-        {
-          "blpn": "3068bpb2074",
-          "name": "Big Spike"
-        }
-      ],
-      "note": "4-hit dramatic music cue"
-    },
-    {
-      "code": "GRLPY",
-      "label": "REZNOR 1",
-      "blpns": [
-        {
-          "blpn": "3068bpb1885",
-          "name": "Reznor (With fireball)"
-        }
-      ],
-      "note": "5-hit"
-    },
-    {
-      "code": "GRVLT",
-      "label": "REZNOR 2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1884",
-          "name": "Reznor (No fireball)"
-        }
-      ],
-      "note": "5-hit"
-    },
-    {
-      "code": "GRBLY",
-      "label": "SUMO",
-      "blpns": [
-        {
-          "blpn": "3068bpb1844",
-          "name": "Boss Sumo"
-        }
-      ],
-      "note": "8-hit boss"
-    },
-    {
-      "code": "GRYPB",
-      "label": "BOOMBOOM",
-      "blpns": [
-        {
-          "blpn": "3068bpb1814",
-          "name": "Boom-boom"
-        }
-      ],
-      "note": "8-hit"
-    },
-    {
-      "code": "GRBYP",
-      "label": "NES",
-      "blpns": [
-        {
-          "blpn": "3068bpb1390",
-          "name": "TV"
-        }
-      ],
-      "note": "From NES set",
-      "use": "Changes reactions to colors, adds orange color reaction until music stops"
-    },
-    {
-      "code": "GRYVB",
-      "label": "?BLKGAME",
-      "blpns": [
-        {
-          "blpn": "14769pb469",
-          "name": "Triple star"
-        }
-      ],
-      "note": "Mario 64 Set 71395",
-      "use": "Place on purple brick to fight bowser.  Other colors to gain red coins"
-    },
-    {
-      "code": "GRBLP",
-      "label": "HAMMER",
-      "blpns": [
-        {
-          "blpn": "3068bpb1370",
-          "name": "Hammer Turntable"
-        }
-      ]
-    },
-    {
-      "code": "GRBVL",
-      "label": "SPIN 1",
-      "blpns": [
-        {
-          "blpn": "68869pb002",
-          "name": "Spin"
-        }
-      ]
-    },
-    {
-      "code": "GRBVP",
-      "label": "SPIN 2",
-      "blpns": [
-        {
-          "blpn": "68869pb005",
-          "name": "Spin 2"
-        }
-      ]
-    },
-    {
-      "code": "GRBLT",
-      "label": "SPIN 3",
-      "blpns": [
-        {
-          "blpn": "68869pb004",
-          "name": "Spin 3"
+          "code": "GRYPT",
+          "label": "SUPER",
+          "blpns": [
+            {
+              "blpn": "14769pb338",
+              "name": "Super Mushroom"
+            }
+          ]
         },
         {
-          "blpn": "66792pb003",
-          "name": "Spin 3"
-        }
-      ]
-    },
-    {
-      "code": "GRYTV",
-      "label": "SPIN 4",
-      "blpns": [
-        {
-          "blpn": "68869pb006",
-          "name": "Spin 4"
-        }
-      ],
-      "note": "Platform for avoiding Boo. Castle music, phew when stops"
-    },
-    {
-      "code": "GRTLB",
-      "label": "SPIN 5",
-      "blpns": [
-        {
-          "blpn": "68869pb009",
-          "name": "Spin 5"
-        }
-      ],
-      "note": "Plays SMB3 Sky Land Part 1 music. Spin for coins"
-    },
-    {
-      "code": "GRBTV",
-      "label": "SPIN 6",
-      "blpns": [
-        {
-          "blpn": "3068bpb1966",
-          "name": "Spin 6"
-        }
-      ],
-      "note": "Spinning hallway"
-    },
-    {
-      "code": "GRBTY",
-      "label": "WAGGLE",
-      "blpns": [
-        {
-          "blpn": "66792pb004",
-          "name": "Side-to-side Waggle Arrows"
+          "code": "GRTYB",
+          "label": "1-UP",
+          "blpns": [
+            {
+              "blpn": "14769pb454",
+              "name": "1-Up"
+            }
+          ],
+          "note": "Plays the 1-Up sound and shows the green mushroom"
         },
         {
-          "blpn": "3068bpb2067",
-          "name": "Biased Directional Arrows"
-        }
-      ],
-      "note": "Drawbridge piece that wiggles to defeat bowser. Plays serious music"
-    },
-    {
-      "code": "BRPVT",
-      "label": "WAGGLE2",
-      "blpns": [
-        {
-          "blpn": "66792pb009",
-          "name": "Side-to-side Waggle Arrows"
-        }
-      ],
-      "note": "Wiggle to defeat King Boo.  Plays serious music. Brick smashing noise when twisted"
-    },
-    {
-      "code": "GRVBT",
-      "label": "SPINY",
-      "blpns": [
-        {
-          "blpn": "3068bpb1484",
-          "name": "Spiny 2"
-        }
-      ]
-    },
-    {
-      "code": "GRPVB",
-      "label": "CLOUD",
-      "blpns": [
-        {
-          "blpn": "66792pb001",
-          "name": "Cloud Platform"
-        }
-      ],
-      "use": "Have to wave mario around while he's on it for it to work"
-    },
-    {
-      "code": "GRPBT",
-      "label": "BDARR 1",
-      "blpns": [
-        {
-          "blpn": "68869pb007",
-          "name": "Bidirectional Arrows"
-        }
-      ],
-      "note": "Listed as Double Arrows in BL.  Lego 71380"
-    },
-    {
-      "code": "GRPLB",
-      "label": "BDARR 2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1350",
-          "name": "Bidirectional Arrows 2"
-        }
-      ],
-      "note": "Comes in the Piranha Plant Power Slide"
-    },
-    {
-      "code": "GRYTB",
-      "label": "BDARR 3",
-      "blpns": [
-        {
-          "blpn": "3068bpb1502",
-          "name": "Bidirectional Arrows 3"
-        }
-      ],
-      "note": "Comes in the Poison Swamp"
-    },
-    {
-      "code": "GRPVT",
-      "label": "BDARR 4",
-      "blpns": [
-        {
-          "blpn": "68869pb001",
-          "name": "Bidirectional Arrows 4"
+          "code": "GRYBP",
+          "label": "POW",
+          "blpns": [
+            {
+              "blpn": "3068bpb1361",
+              "name": "POW"
+            }
+          ]
         },
         {
-          "blpn": "66792pb002",
-          "name": "Bidirectional Arrows 4"
-        }
-      ],
-      "note": "Comes in Thwomp Drop"
-    },
-    {
-      "code": "GRPYT",
-      "label": "BDARR 5",
-      "blpns": [
-        {
-          "blpn": "68869pb003",
-          "name": "Bidirectional Arrows 5"
-        }
-      ],
-      "note": "Comes in Womp's Lava Trouble and Toad's Treasure hunt (different brick colors)"
-    },
-    {
-      "code": "GRPVL",
-      "label": "KEYHOLE",
-      "blpns": [
-        {
-          "blpn": "3068bpb1982",
-          "name": "Entrance keyhole"
-        }
-      ],
-      "note": "Rotate for creaking"
-    },
-    {
-      "code": "GRVYL",
-      "label": "SKEWER",
-      "blpns": [
-        {
-          "blpn": "66792pb008",
-          "name": "Skewer"
-        }
-      ]
-    },
-    {
-      "code": "GRTLY",
-      "label": "FERRIS",
-      "blpns": [
-        {
-          "blpn": "66792pb007",
-          "name": "Ferris wheel"
-        }
-      ]
-    },
-    {
-      "code": "GRTPL",
-      "label": "GEAR",
-      "blpns": [
-        {
-          "blpn": "3068bpb1803",
-          "name": "Gear icon"
-        }
-      ],
-      "note": "Spin for coins"
-    },
-    {
-      "code": "GRVTL",
-      "label": "NUT",
-      "blpns": [
-        {
-          "blpn": "3068bpb1804",
-          "name": "Nut icon"
-        }
-      ],
-      "note": "Spin for coins"
-    },
-    {
-      "code": "GRTVB",
-      "label": "SEESAW",
-      "blpns": [
-        {
-          "blpn": "66792pb006",
-          "name": "Seesaw"
-        }
-      ],
-      "note": "Ominous Music. Cooperates with Gear and Nut spinning"
-    },
-    {
-      "code": "BRYVG",
-      "label": "SWING",
-      "blpns": [
-        {
-          "blpn": "3068bpb2094",
-          "name": "Peach swing"
-        }
-      ],
-      "note": "Sky Land 1 music.  Clinking sound of glass when tipped.  Coins when you do a flip."
-    },
-    {
-      "code": "GRTYL",
-      "label": "BIASDIR",
-      "blpns": [
-        {
-          "blpn": "3068bpb1853",
-          "name": "Biased directional Arrows"
+          "code": "GRPBL",
+          "label": "POISON",
+          "blpns": [
+            {
+              "blpn": "14769pb379",
+              "name": "Poison Mushroom"
+            }
+          ]
         },
         {
-          "blpn": "66792pb010",
-          "name": "Directional Arrows"
-        }
-      ]
-    },
-    {
-      "code": "GRTBL",
-      "label": "STEERING",
-      "blpns": [
+          "code": "GRVBY",
+          "label": "STAR",
+          "blpns": [
+            {
+              "blpn": "3068bpb1384",
+              "name": "Star"
+            }
+          ]
+        },
         {
-          "blpn": "3068bpb1958",
-          "name": "Steering wheel for Bowser's ship"
+          "code": "GRBTP",
+          "label": "TIMER",
+          "blpns": [
+            {
+              "blpn": "3068bpb1347",
+              "name": "Timer"
+            }
+          ],
+          "note": "Add 30 seconds"
+        },
+        {
+          "code": "GRTLP",
+          "label": "TIMER 2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1855",
+              "name": "Timer 2"
+            }
+          ],
+          "note": "Add 30 seconds"
+        },
+        {
+          "code": "BRYTP",
+          "label": "TIMER 3",
+          "blpns": [
+            {
+              "blpn": "3068bpb2083",
+              "name": "Timer 3"
+            }
+          ],
+          "note": "Add 30 seconds"
+        },
+        {
+          "code": "GRPYB",
+          "label": "? BLOCK",
+          "blpns": [
+            {
+              "blpn": "3068bpb1359",
+              "name": "Mystery Block ?"
+            }
+          ]
+        },
+        {
+          "code": "GRVTB",
+          "label": "P?BLOCK1",
+          "blpns": [
+            {
+              "blpn": "3068bpb1762",
+              "name": "Customization Mystery Block 1"
+            }
+          ],
+          "note": "Set 71380",
+          "use": "Select the powerup BEFORE start by twisting mario on code as shown by arrows.  Choose mushroom, poison mushroom, 10 coins, or star.  Lift to save."
+        },
+        {
+          "code": "GRVTP",
+          "label": "P?BLOCK2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1784",
+              "name": "Customization Mystery Block 2"
+            }
+          ],
+          "note": "Set 71380",
+          "use": "Select the powerup BEFORE start by twisting mario on code as shown by arrows.  Choose mushroom, poison mushroom, 10 coins, or star.  Lift to save."
+        },
+        {
+          "code": "GRVTY",
+          "label": "TIMEGEAR",
+          "blpns": [
+            {
+              "blpn": "3068bpb1533",
+              "name": "Customization Time Block"
+            }
+          ],
+          "note": "Set 71380."
+        },
+        {
+          "code": "GRYBL",
+          "label": "P SWITCH",
+          "blpns": [
+            {
+              "blpn": "3068bpb1394",
+              "name": "P Switch"
+            }
+          ]
+        },
+        {
+          "code": "GRLPT",
+          "label": "COIN 1",
+          "blpns": [
+            {
+              "blpn": "3068bpb1387",
+              "name": "Coin"
+            },
+            {
+              "blpn": "11203pb083",
+              "name": "Coin"
+            }
+          ]
+        },
+        {
+          "code": "GRYTP",
+          "label": "COIN 2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1393",
+              "name": "Coin 2"
+            }
+          ]
+        },
+        {
+          "code": "GRPYL",
+          "label": "COIN 3",
+          "blpns": [
+            {
+              "blpn": "3068bpb1527",
+              "name": "Coin 3"
+            },
+            {
+              "blpn": "3068bpb2079",
+              "name": "Coin 3"
+            }
+          ]
+        },
+        {
+          "code": "GRVPT",
+          "label": "GHOST",
+          "blpns": [
+            {
+              "blpn": "14769pb339",
+              "name": "Peepa"
+            },
+            {
+              "blpn": "3068bpb1409",
+              "name": "Boo"
+            }
+          ],
+          "note": "Vacuum (4-hit)"
+        },
+        {
+          "code": "GRTVY",
+          "label": "BOO",
+          "blpns": [
+            {
+              "blpn": "3068bpb1799",
+              "name": "Boo"
+            }
+          ]
+        },
+        {
+          "code": "BRYPG",
+          "label": "GRBG GHO",
+          "blpns": [
+            {
+              "blpn": "3068bpb1973",
+              "name": "Garbage can ghost"
+            }
+          ],
+          "note": "Vacuum or use star"
+        },
+        {
+          "code": "BRPLT",
+          "label": "GRBGHOST",
+          "blpns": [
+            {
+              "blpn": "3068bpb1974",
+              "name": "Grabbing ghost"
+            }
+          ],
+          "note": "Vacuum or use star"
+        },
+        {
+          "code": "BRPTV",
+          "label": "GLDGHOST",
+          "blpns": [
+            {
+              "blpn": "14769pb514",
+              "name": "Golden ghost"
+            }
+          ],
+          "note": "Vacuum or use star"
+        },
+        {
+          "code": "GRTPY",
+          "label": "BOGMIRE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1984",
+              "name": "Bogmire"
+            }
+          ],
+          "note": "Vacuum (10-hit) or use star"
+        },
+        {
+          "code": "GRBPV",
+          "label": "SHY GUY",
+          "blpns": [
+            {
+              "blpn": "14769pb341",
+              "name": "Shy Guy"
+            }
+          ]
+        },
+        {
+          "code": "GRBPY",
+          "label": "GOOMBA",
+          "blpns": [
+            {
+              "blpn": "3068bpb1381",
+              "name": "Goomba"
+            },
+            {
+              "blpn": "3068bpb1505",
+              "name": "Bone Goomba"
+            },
+            {
+              "blpn": "3068bpb1501",
+              "name": "Ninji"
+            },
+            {
+              "blpn": "3068bpb1348",
+              "name": "Bullet Bill"
+            },
+            {
+              "blpn": "3068bpb1360",
+              "name": "Monty Mole"
+            },
+            {
+              "blpn": "14769pb368",
+              "name": "Fly Guy"
+            },
+            {
+              "blpn": "3068bpb1365",
+              "name": "Fuzzy"
+            },
+            {
+              "blpn": "3068bpb1520",
+              "name": "Foo"
+            },
+            {
+              "blpn": "3068bpb1904",
+              "name": "Crowber"
+            },
+            {
+              "blpn": "3068bpb1915",
+              "name": "Para-Biddybud"
+            },
+            {
+              "blpn": "3068bpb1499",
+              "name": "Parachute Goomba"
+            },
+            {
+              "blpn": "3068bpb1916",
+              "name": "Scaredy Rat"
+            },
+            {
+              "blpn": "3068bpb2096",
+              "name": "Cat Goomba"
+            },
+            {
+              "blpn": "14769pb548",
+              "name": "Shy Guy"
+            },
+            {
+              "blpn": "3068bpb2054",
+              "name": "Toady"
+            },
+            {
+              "blpn": "3068bpb1798",
+              "name": "Swoop"
+            },
+            {
+              "blpn": "3068bpb1932",
+              "name": "Stingby"
+            },
+            {
+              "blpn": "3068bpb1905",
+              "name": "Galoomba"
+            },
+            {
+              "blpn": "3068bpb1888",
+              "name": "Goombrat"
+            },
+            {
+              "blpn": "3068bpb1908",
+              "name": "Ant Trooper"
+            },
+            {
+              "blpn": "3068bpb2062",
+              "name": "Waddlewing"
+            },
+            {
+              "blpn": "3068bpb1797",
+              "name": "Scuttlebug"
+            }
+          ]
+        },
+        {
+          "code": "GRBYV",
+          "label": "THWIMP",
+          "blpns": [
+            {
+              "blpn": "3068bpb1524",
+              "name": "Thwimp"
+            }
+          ]
+        },
+        {
+          "code": "GRYBT",
+          "label": "BRAMBALL",
+          "blpns": [
+            {
+              "blpn": "3068bpb1526",
+              "name": "Bramball"
+            }
+          ]
+        },
+        {
+          "code": "GRVYP",
+          "label": "BLOOPER",
+          "blpns": [
+            {
+              "blpn": "3068bpb1363",
+              "name": "Blooper"
+            },
+            {
+              "blpn": "3068bpb1413",
+              "name": "Urchin"
+            },
+            {
+              "blpn": "3068bpb1403",
+              "name": "Cheep Cheep"
+            },
+            {
+              "blpn": "3068bpb1349",
+              "name": "Eep Cheep"
+            },
+            {
+              "blpn": "3068bpb1500",
+              "name": "Huckit Crab"
+            },
+            {
+              "blpn": "3068bpb1521",
+              "name": "Spiny Cheep Cheep"
+            },
+            {
+              "blpn": "3068bpb1796",
+              "name": "Torpedo Ted"
+            }
+          ]
+        },
+        {
+          "code": "GRPVY",
+          "label": "BUZZY",
+          "blpns": [
+            {
+              "blpn": "3068bpb1519",
+              "name": "Para-Beetle"
+            },
+            {
+              "blpn": "3068bpb1415",
+              "name": "Buzzy Beetle"
+            },
+            {
+              "blpn": "3068bpb1364",
+              "name": "Spiny"
+            },
+            {
+              "blpn": "3068bpb1964",
+              "name": "Mechakoopa"
+            },
+            {
+              "blpn": "3068bpb1907",
+              "name": "Bony Beetle"
+            }
+          ]
+        },
+        {
+          "code": "GRPTB",
+          "label": "CHOMP",
+          "blpns": [
+            {
+              "blpn": "11203pb064",
+              "name": "Chain Chomp"
+            }
+          ]
+        },
+        {
+          "code": "GRBVY",
+          "label": "DRY BONE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1408",
+              "name": "Dry Bones"
+            },
+            {
+              "blpn": "3068bpb1414",
+              "name": "Paragoomba"
+            },
+            {
+              "blpn": "3068bpb1397",
+              "name": "Lava Bubble"
+            }
+          ]
+        },
+        {
+          "code": "GRVLB",
+          "label": "AMP",
+          "blpns": [
+            {
+              "blpn": "3068bpb1801",
+              "name": "Amp"
+            }
+          ],
+          "note": "Electrocutes and causes spinning eyes without star power"
+        },
+        {
+          "code": "BRPVG",
+          "label": "FREEZIE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1914",
+              "name": "Freezie"
+            }
+          ],
+          "note": "Freezes the character"
+        },
+        {
+          "code": "GRBPT",
+          "label": "WHOMP",
+          "blpns": [
+            {
+              "blpn": "3068bpb1396",
+              "name": "Whomp"
+            }
+          ],
+          "note": "NOT Thwomp (this guy falls on his face)"
+        },
+        {
+          "code": "GRPTY",
+          "label": "LAVA",
+          "blpns": [
+            {
+              "blpn": "3068bpb1410",
+              "name": "Lava Bubble"
+            }
+          ]
+        },
+        {
+          "code": "GRPTL",
+          "label": "THWOMP",
+          "blpns": [
+            {
+              "blpn": "3068bpb1407",
+              "name": "Thwomp"
+            }
+          ]
+        },
+        {
+          "code": "GRVBL",
+          "label": "BOB-OMB",
+          "blpns": [
+            {
+              "blpn": "3068bpb1476",
+              "name": "Bob-Omb 1"
+            }
+          ]
+        },
+        {
+          "code": "GRBYT",
+          "label": "BOMB 2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1366",
+              "name": "Bob-Omb 2"
+            }
+          ]
+        },
+        {
+          "code": "BRPLV",
+          "label": "BOMB 3",
+          "blpns": [
+            {
+              "blpn": "3068bpb1883",
+              "name": "Bob-omb"
+            }
+          ]
+        },
+        {
+          "code": "GRTVP",
+          "label": "PARABOMB",
+          "blpns": [
+            {
+              "blpn": "3068bpb1795",
+              "name": "Parachute Bob-omb"
+            }
+          ]
+        },
+        {
+          "code": "GRVPB",
+          "label": "PIRANHA",
+          "blpns": [
+            {
+              "blpn": "3068bpb1382",
+              "name": "Piranha Plant"
+            }
+          ]
+        },
+        {
+          "code": "GRYTL",
+          "label": "KOOPA 1",
+          "blpns": [
+            {
+              "blpn": "3068bpb1383",
+              "name": "Koopa Troopa"
+            }
+          ]
+        },
+        {
+          "code": "GRPTV",
+          "label": "KOOPA 2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1351",
+              "name": "Koopa Troopa 2"
+            }
+          ]
+        },
+        {
+          "code": "GRBTL",
+          "label": "KPARAT 1",
+          "blpns": [
+            {
+              "blpn": "3068bpb1477",
+              "name": "Koopa Paratroopa"
+            }
+          ]
+        },
+        {
+          "code": "GRYVT",
+          "label": "KPARAT 2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1478",
+              "name": "Koopa Paratroopa 2"
+            }
+          ]
+        },
+        {
+          "code": "GRVBP",
+          "label": "EXPLODE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1386",
+              "name": "Swoop Explosion"
+            }
+          ]
+        },
+        {
+          "code": "BRYTG",
+          "label": "EXPLODE2",
+          "blpns": [
+            {
+              "blpn": "68869pb010",
+              "name": "Big Spike Explosion"
+            }
+          ],
+          "note": "Hit animation, Launching sound and 'go go go'"
+        },
+        {
+          "code": "GRYVP",
+          "label": "STONE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1362",
+              "name": "Stone Eye"
+            }
+          ]
+        },
+        {
+          "code": "GRYVL",
+          "label": "POKEY",
+          "blpns": [
+            {
+              "blpn": "3068bpb1369",
+              "name": "Pokey"
+            }
+          ],
+          "note": "App has it as the V being P, which is wrong."
+        },
+        {
+          "code": "BRPVY",
+          "label": "BIG URCH",
+          "blpns": [
+            {
+              "blpn": "3068bpb1978",
+              "name": "Purple Urchin"
+            }
+          ],
+          "note": "Not normally stompable"
+        },
+        {
+          "code": "BRPYG",
+          "label": "BULLY",
+          "blpns": [
+            {
+              "blpn": "3068bpb1910",
+              "name": "Bully"
+            }
+          ],
+          "note": "Have to do a flip before stomping for coins"
+        },
+        {
+          "code": "GRYLT",
+          "label": "LAKITU",
+          "blpns": [
+            {
+              "blpn": "3068bpb1856",
+              "name": "Lakitu"
+            }
+          ],
+          "note": "2-hit"
+        },
+        {
+          "code": "GRTYV",
+          "label": "ROCKY",
+          "blpns": [
+            {
+              "blpn": "3068bpb1959",
+              "name": "Rocky Wrench"
+            }
+          ],
+          "note": "3-hit"
+        },
+        {
+          "code": "BRPTG",
+          "label": "COINCOFF",
+          "blpns": [
+            {
+              "blpn": "3068bpb1911",
+              "name": "Coin Coffer"
+            }
+          ],
+          "note": "3-hit"
+        },
+        {
+          "code": "GRTYP",
+          "label": "GRRROL",
+          "blpns": [
+            {
+              "blpn": "3068bpb1955",
+              "name": "Grrrol"
+            },
+            {
+              "blpn": "3068bpb2075",
+              "name": "Piranha Plant"
+            }
+          ],
+          "note": "3-hit"
+        },
+        {
+          "code": "BRVYP",
+          "label": "BIG GOOM",
+          "blpns": [
+            {
+              "blpn": "3068bpb2076",
+              "name": "Big Goomba"
+            }
+          ],
+          "note": "3-hit"
+        },
+        {
+          "code": "BRYGP",
+          "label": "BIGKOOPA",
+          "blpns": [
+            {
+              "blpn": "3068bpb2078",
+              "name": "Big Koopa"
+            }
+          ],
+          "note": "3-hit"
+        },
+        {
+          "code": "BRVTP",
+          "label": "BOOMRBRO",
+          "blpns": [
+            {
+              "blpn": "3068bpb2073",
+              "name": "Boomerang Bro"
+            }
+          ],
+          "note": "4-hit"
+        },
+        {
+          "code": "BRVLP",
+          "label": "HAMMRBRO",
+          "blpns": [
+            {
+              "blpn": "3068bpb2055",
+              "name": "Hammer Bro"
+            }
+          ],
+          "note": "4-hit"
+        },
+        {
+          "code": "GRTLV",
+          "label": "KAMEK",
+          "blpns": [
+            {
+              "blpn": "11203pb079",
+              "name": "Kamek"
+            }
+          ],
+          "note": "4-hit"
+        },
+        {
+          "code": "BRYVP",
+          "label": "BIGSPIKE",
+          "blpns": [
+            {
+              "blpn": "3068bpb2074",
+              "name": "Big Spike"
+            }
+          ],
+          "note": "4-hit dramatic music cue"
+        },
+        {
+          "code": "GRLPY",
+          "label": "REZNOR 1",
+          "blpns": [
+            {
+              "blpn": "3068bpb1885",
+              "name": "Reznor (With fireball)"
+            }
+          ],
+          "note": "5-hit"
+        },
+        {
+          "code": "GRVLT",
+          "label": "REZNOR 2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1884",
+              "name": "Reznor (No fireball)"
+            }
+          ],
+          "note": "5-hit"
+        },
+        {
+          "code": "GRBLY",
+          "label": "SUMO",
+          "blpns": [
+            {
+              "blpn": "3068bpb1844",
+              "name": "Boss Sumo"
+            }
+          ],
+          "note": "8-hit boss"
+        },
+        {
+          "code": "GRYPB",
+          "label": "BOOMBOOM",
+          "blpns": [
+            {
+              "blpn": "3068bpb1814",
+              "name": "Boom-boom"
+            }
+          ],
+          "note": "8-hit"
+        },
+        {
+          "code": "GRBYP",
+          "label": "NES",
+          "blpns": [
+            {
+              "blpn": "3068bpb1390",
+              "name": "TV"
+            }
+          ],
+          "note": "From NES set",
+          "use": "Changes reactions to colors, adds orange color reaction until music stops"
+        },
+        {
+          "code": "GRYVB",
+          "label": "?BLKGAME",
+          "blpns": [
+            {
+              "blpn": "14769pb469",
+              "name": "Triple star"
+            }
+          ],
+          "note": "Mario 64 Set 71395",
+          "use": "Place on purple brick to fight bowser.  Other colors to gain red coins"
+        },
+        {
+          "code": "GRBLP",
+          "label": "HAMMER",
+          "blpns": [
+            {
+              "blpn": "3068bpb1370",
+              "name": "Hammer Turntable"
+            }
+          ]
+        },
+        {
+          "code": "GRBVL",
+          "label": "SPIN 1",
+          "blpns": [
+            {
+              "blpn": "68869pb002",
+              "name": "Spin"
+            }
+          ]
+        },
+        {
+          "code": "GRBVP",
+          "label": "SPIN 2",
+          "blpns": [
+            {
+              "blpn": "68869pb005",
+              "name": "Spin 2"
+            }
+          ]
+        },
+        {
+          "code": "GRBLT",
+          "label": "SPIN 3",
+          "blpns": [
+            {
+              "blpn": "68869pb004",
+              "name": "Spin 3"
+            },
+            {
+              "blpn": "66792pb003",
+              "name": "Spin 3"
+            }
+          ]
+        },
+        {
+          "code": "GRYTV",
+          "label": "SPIN 4",
+          "blpns": [
+            {
+              "blpn": "68869pb006",
+              "name": "Spin 4"
+            }
+          ],
+          "note": "Platform for avoiding Boo. Castle music, phew when stops"
+        },
+        {
+          "code": "GRTLB",
+          "label": "SPIN 5",
+          "blpns": [
+            {
+              "blpn": "68869pb009",
+              "name": "Spin 5"
+            }
+          ],
+          "note": "Plays SMB3 Sky Land Part 1 music. Spin for coins"
+        },
+        {
+          "code": "GRBTV",
+          "label": "SPIN 6",
+          "blpns": [
+            {
+              "blpn": "3068bpb1966",
+              "name": "Spin 6"
+            }
+          ],
+          "note": "Spinning hallway"
+        },
+        {
+          "code": "GRBTY",
+          "label": "WAGGLE",
+          "blpns": [
+            {
+              "blpn": "66792pb004",
+              "name": "Side-to-side Waggle Arrows"
+            },
+            {
+              "blpn": "3068bpb2067",
+              "name": "Biased Directional Arrows"
+            }
+          ],
+          "note": "Drawbridge piece that wiggles to defeat bowser. Plays serious music"
+        },
+        {
+          "code": "BRPVT",
+          "label": "WAGGLE2",
+          "blpns": [
+            {
+              "blpn": "66792pb009",
+              "name": "Side-to-side Waggle Arrows"
+            }
+          ],
+          "note": "Wiggle to defeat King Boo.  Plays serious music. Brick smashing noise when twisted"
+        },
+        {
+          "code": "GRVBT",
+          "label": "SPINY",
+          "blpns": [
+            {
+              "blpn": "3068bpb1484",
+              "name": "Spiny 2"
+            }
+          ]
+        },
+        {
+          "code": "GRPVB",
+          "label": "CLOUD",
+          "blpns": [
+            {
+              "blpn": "66792pb001",
+              "name": "Cloud Platform"
+            }
+          ],
+          "use": "Have to wave mario around while he's on it for it to work"
+        },
+        {
+          "code": "GRPBT",
+          "label": "BDARR 1",
+          "blpns": [
+            {
+              "blpn": "68869pb007",
+              "name": "Bidirectional Arrows"
+            }
+          ],
+          "note": "Listed as Double Arrows in BL.  Lego 71380"
+        },
+        {
+          "code": "GRPLB",
+          "label": "BDARR 2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1350",
+              "name": "Bidirectional Arrows 2"
+            }
+          ],
+          "note": "Comes in the Piranha Plant Power Slide"
+        },
+        {
+          "code": "GRYTB",
+          "label": "BDARR 3",
+          "blpns": [
+            {
+              "blpn": "3068bpb1502",
+              "name": "Bidirectional Arrows 3"
+            }
+          ],
+          "note": "Comes in the Poison Swamp"
+        },
+        {
+          "code": "GRPVT",
+          "label": "BDARR 4",
+          "blpns": [
+            {
+              "blpn": "68869pb001",
+              "name": "Bidirectional Arrows 4"
+            },
+            {
+              "blpn": "66792pb002",
+              "name": "Bidirectional Arrows 4"
+            }
+          ],
+          "note": "Comes in Thwomp Drop"
+        },
+        {
+          "code": "GRPYT",
+          "label": "BDARR 5",
+          "blpns": [
+            {
+              "blpn": "68869pb003",
+              "name": "Bidirectional Arrows 5"
+            }
+          ],
+          "note": "Comes in Womp's Lava Trouble and Toad's Treasure hunt (different brick colors)"
+        },
+        {
+          "code": "GRPVL",
+          "label": "KEYHOLE",
+          "blpns": [
+            {
+              "blpn": "3068bpb1982",
+              "name": "Entrance keyhole"
+            }
+          ],
+          "note": "Rotate for creaking"
+        },
+        {
+          "code": "GRVYL",
+          "label": "SKEWER",
+          "blpns": [
+            {
+              "blpn": "66792pb008",
+              "name": "Skewer"
+            }
+          ]
+        },
+        {
+          "code": "GRTLY",
+          "label": "FERRIS",
+          "blpns": [
+            {
+              "blpn": "66792pb007",
+              "name": "Ferris wheel"
+            }
+          ]
+        },
+        {
+          "code": "GRTPL",
+          "label": "GEAR",
+          "blpns": [
+            {
+              "blpn": "3068bpb1803",
+              "name": "Gear icon"
+            }
+          ],
+          "note": "Spin for coins"
+        },
+        {
+          "code": "GRVTL",
+          "label": "NUT",
+          "blpns": [
+            {
+              "blpn": "3068bpb1804",
+              "name": "Nut icon"
+            }
+          ],
+          "note": "Spin for coins"
+        },
+        {
+          "code": "GRTVB",
+          "label": "SEESAW",
+          "blpns": [
+            {
+              "blpn": "66792pb006",
+              "name": "Seesaw"
+            }
+          ],
+          "note": "Ominous Music. Cooperates with Gear and Nut spinning"
+        },
+        {
+          "code": "BRYVG",
+          "label": "SWING",
+          "blpns": [
+            {
+              "blpn": "3068bpb2094",
+              "name": "Peach swing"
+            }
+          ],
+          "note": "Sky Land 1 music.  Clinking sound of glass when tipped.  Coins when you do a flip."
+        },
+        {
+          "code": "GRTYL",
+          "label": "BIASDIR",
+          "blpns": [
+            {
+              "blpn": "3068bpb1853",
+              "name": "Biased directional Arrows"
+            },
+            {
+              "blpn": "66792pb010",
+              "name": "Directional Arrows"
+            }
+          ]
+        },
+        {
+          "code": "GRTBL",
+          "label": "STEERING",
+          "blpns": [
+            {
+              "blpn": "3068bpb1958",
+              "name": "Steering wheel for Bowser's ship"
+            }
+          ],
+          "note": "Plays Sky Land 1 music"
+        },
+        {
+          "code": "BRYLG",
+          "label": "BOMBWARP",
+          "blpns": [
+            {
+              "blpn": "11203pb089",
+              "name": "Bob-omb painting"
+            }
+          ],
+          "note": "Twirly Magic, music plays. Stomp Bob-omb for lots of coins"
+        },
+        {
+          "code": "GRYLV",
+          "label": "RAFT",
+          "note": "Comes in Poison Swamp",
+          "blpns": [
+            {
+              "blpn": "66792pb005",
+              "name": "Raft"
+            }
+          ]
+        },
+        {
+          "code": "BRPGV",
+          "label": "DIVING",
+          "blpns": [
+            {
+              "blpn": "3068bpb1980",
+              "name": "Diving board"
+            }
+          ],
+          "note": "Scan blue to dive into the water for coins"
+        },
+        {
+          "code": "BRVGY",
+          "label": "PCTHRONE",
+          "blpns": [
+            {
+              "blpn": "3068bpb2066",
+              "name": "Peach throne"
+            }
+          ],
+          "note": "Ending music, coins."
+        },
+        {
+          "code": "GRLBP",
+          "label": "BROOM",
+          "note": "Up/down movement",
+          "blpns": [
+            {
+              "blpn": "3068bpb1961",
+              "name": "Kamek Broom"
+            }
+          ]
+        },
+        {
+          "code": "BRPLG",
+          "label": "CLOWN",
+          "blpns": [
+            {
+              "blpn": "3068bpb1918",
+              "name": "Bowser Jr's Clown Car"
+            }
+          ],
+          "note": "Play Sky Land 1 music.  Lift up rapidly to take off.  Sputter noise."
+        },
+        {
+          "code": "GRBVT",
+          "label": "SHOE",
+          "blpns": [
+            {
+              "blpn": "3068bpb2084",
+              "name": "Kuribo's shoe"
+            }
+          ],
+          "note": "Sky Land 1 music."
+        },
+        {
+          "code": "GRLBT",
+          "label": "MAST",
+          "blpns": [
+            {
+              "blpn": "3068bpb1960",
+              "name": "Bowser ship mast"
+            }
+          ],
+          "note": "8-hit"
+        },
+        {
+          "code": "GRTPB",
+          "label": "CLAW",
+          "blpns": [
+            {
+              "blpn": "11203pb081",
+              "name": "Bowser Claw"
+            }
+          ],
+          "note": "8-hit"
+        },
+        {
+          "code": "GRTBV",
+          "label": "SHIPHEAD",
+          "blpns": [
+            {
+              "blpn": "11203pb080",
+              "name": "Bowser's ship head"
+            }
+          ],
+          "note": "12-hit"
+        },
+        {
+          "code": "GRBYL",
+          "label": "LARRY",
+          "blpns": [
+            {
+              "blpn": "3068bpb1534",
+              "name": "Larry"
+            }
+          ],
+          "note": "6-hit"
+        },
+        {
+          "code": "BRVGP",
+          "label": "LUDWIG",
+          "blpns": [
+            {
+              "blpn": "3068bpb2058",
+              "name": "Ludwig von Koopa"
+            }
+          ],
+          "note": "6-hit"
+        },
+        {
+          "code": "BRVPG",
+          "label": "LEMMY",
+          "blpns": [
+            {
+              "blpn": "14769pb555",
+              "name": "Lemmy"
+            }
+          ],
+          "note": "6-hit"
+        },
+        {
+          "code": "BRVTY",
+          "label": "IGGY",
+          "blpns": [
+            {
+              "blpn": "3068bpb2077",
+              "name": "Iggy"
+            }
+          ],
+          "note": "6-hit"
+        },
+        {
+          "code": "GRVYB",
+          "label": "KING BOO",
+          "blpns": [
+            {
+              "blpn": "3068bpb1388",
+              "name": "King Boo"
+            }
+          ],
+          "note": "7-hit"
+        },
+        {
+          "code": "BRPYT",
+          "label": "KINGBOO2",
+          "blpns": [
+            {
+              "blpn": "3068bpb1975",
+              "name": "Dark Moon King Boo"
+            }
+          ],
+          "note": "12-hit"
+        },
+        {
+          "code": "GRTBY",
+          "label": "JrBOWSER",
+          "blpns": [
+            {
+              "blpn": "3068bpb1378",
+              "name": "Bowser Jr"
+            }
+          ]
+        },
+        {
+          "code": "GRBLV",
+          "label": "BOWSER",
+          "blpns": [
+            {
+              "blpn": "3068bpb1416",
+              "name": "Bowser"
+            }
+          ]
+        },
+        {
+          "code": "BRYLV",
+          "label": "BOWSER 2",
+          "blpns": [
+            {
+              "blpn": "3068bpb2059",
+              "name": "Bowser"
+            }
+          ],
+          "note": "10-hit"
+        },
+        {
+          "code": "GRLBY",
+          "label": "GOAL",
+          "blpns": [
+            {
+              "blpn": "3068bpb1379",
+              "name": "Goal"
+            }
+          ]
         }
       ],
-      "note": "Plays Sky Land 1 music"
-    },
-    {
-      "code": "BRYLG",
-      "label": "BOMBWARP",
-      "blpns": [
+      "undeciphered": [],
+      "unidentified": [
         {
-          "blpn": "11203pb089",
-          "name": "Bob-omb painting"
-        }
-      ],
-      "note": "Twirly Magic, music plays. Stomp Bob-omb for lots of coins"
-    },
-    {
-      "code": "GRYLV",
-      "label": "RAFT",
-      "note": "Comes in Poison Swamp",
-      "blpns": [
-        {
-          "blpn": "66792pb005",
-          "name": "Raft"
-        }
-      ]
-    },
-    {
-      "code": "BRPGV",
-      "label": "DIVING",
-      "blpns": [
-        {
-          "blpn": "3068bpb1980",
-          "name": "Diving board"
-        }
-      ],
-      "note": "Scan blue to dive into the water for coins"
-    },
-    {
-      "code": "BRVGY",
-      "label": "PCTHRONE",
-      "blpns": [
-        {
-          "blpn": "3068bpb2066",
-          "name": "Peach throne"
-        }
-      ],
-      "note": "Ending music, coins."
-    },
-    {
-      "code": "GRLBP",
-      "label": "BROOM",
-      "note": "Up/down movement",
-      "blpns": [
-        {
-          "blpn": "3068bpb1961",
-          "name": "Kamek Broom"
-        }
-      ]
-    },
-    {
-      "code": "BRPLG",
-      "label": "CLOWN",
-      "blpns": [
-        {
-          "blpn": "3068bpb1918",
-          "name": "Bowser Jr's Clown Car"
-        }
-      ],
-      "note": "Play Sky Land 1 music.  Lift up rapidly to take off.  Sputter noise."
-    },
-    {
-      "code": "GRBVT",
-      "label": "SHOE",
-      "blpns": [
-        {
-          "blpn": "3068bpb2084",
-          "name": "Kuribo's shoe"
-        }
-      ],
-      "note": "Sky Land 1 music."
-    },
-    {
-      "code": "GRLBT",
-      "label": "MAST",
-      "blpns": [
-        {
-          "blpn": "3068bpb1960",
-          "name": "Bowser ship mast"
-        }
-      ],
-      "note": "8-hit"
-    },
-    {
-      "code": "GRTPB",
-      "label": "CLAW",
-      "blpns": [
-        {
-          "blpn": "11203pb081",
-          "name": "Bowser Claw"
-        }
-      ],
-      "note": "8-hit"
-    },
-    {
-      "code": "GRTBV",
-      "label": "SHIPHEAD",
-      "blpns": [
-        {
-          "blpn": "11203pb080",
-          "name": "Bowser's ship head"
-        }
-      ],
-      "note": "12-hit"
-    },
-    {
-      "code": "GRBYL",
-      "label": "LARRY",
-      "blpns": [
-        {
-          "blpn": "3068bpb1534",
-          "name": "Larry"
-        }
-      ],
-      "note": "6-hit"
-    },
-    {
-      "code": "BRVGP",
-      "label": "LUDWIG",
-      "blpns": [
-        {
-          "blpn": "3068bpb2058",
-          "name": "Ludwig von Koopa"
-        }
-      ],
-      "note": "6-hit"
-    },
-    {
-      "code": "BRVPG",
-      "label": "LEMMY",
-      "blpns": [
-        {
-          "blpn": "14769pb555",
-          "name": "Lemmy"
-        }
-      ],
-      "note": "6-hit"
-    },
-    {
-      "code": "BRVTY",
-      "label": "IGGY",
-      "blpns": [
-        {
-          "blpn": "3068bpb2077",
-          "name": "Iggy"
-        }
-      ],
-      "note": "6-hit"
-    },
-    {
-      "code": "GRVYB",
-      "label": "KING BOO",
-      "blpns": [
-        {
-          "blpn": "3068bpb1388",
-          "name": "King Boo"
-        }
-      ],
-      "note": "7-hit"
-    },
-    {
-      "code": "BRPYT",
-      "label": "KINGBOO2",
-      "blpns": [
-        {
-          "blpn": "3068bpb1975",
-          "name": "Dark Moon King Boo"
-        }
-      ],
-      "note": "12-hit"
-    },
-    {
-      "code": "GRTBY",
-      "label": "JrBOWSER",
-      "blpns": [
-        {
-          "blpn": "3068bpb1378",
-          "name": "Bowser Jr"
-        }
-      ]
-    },
-    {
-      "code": "GRBLV",
-      "label": "BOWSER",
-      "blpns": [
-        {
-          "blpn": "3068bpb1416",
-          "name": "Bowser"
-        }
-      ]
-    },
-    {
-      "code": "BRYLV",
-      "label": "BOWSER 2",
-      "blpns": [
-        {
-          "blpn": "3068bpb2059",
-          "name": "Bowser"
-        }
-      ],
-      "note": "10-hit"
-    },
-    {
-      "code": "GRLBY",
-      "label": "GOAL",
-      "blpns": [
-        {
-          "blpn": "3068bpb1379",
-          "name": "Goal"
+          "code": "BRVLY",
+          "label": "BIGBOWSR",
+          "note": "Mighty Bowser. Lego 71411"
         }
       ]
     }
-  ],
-  "undeciphered": [],
-  "unidentified": [
-    {
-      "code": "BRVLY",
-      "label": "BIGBOWSR",
-      "note": "Mighty Bowser. Lego 71411"
-    }
-  ]
-}
-</script>
+  </script>
 
-<!-- Extremely cut down, modified and re-aligned version of the SVGs created by Reddit user EntireStatus2007 -->
-<div id="code_template">
+  <!-- Extremely cut down, modified and re-aligned version of the SVGs created by Reddit user EntireStatus2007 -->
+  <div id="code_template">
 <svg
 	xmlns:dc="http://purl.org/dc/elements/1.1/"
 	xmlns:cc="http://creativecommons.org/ns#"
@@ -2000,8 +2001,8 @@ var database_data = {
 					x="11.2"
 					y="0"
 				/>
-			</g>
-		</g>
+          </g>
+        </g>
 		<g
 			id="COLOR-2-GROUP"
 			style="display:inline;fill-opacity:1;stroke-width:0.2;">
@@ -2050,8 +2051,8 @@ var database_data = {
 					x="11.6"
 					y="0"
 				/>
-</g>
-		</g>
+          </g>
+        </g>
 		<g
 			id="COLOR-3-GROUP"
 			style="display:inline;fill-opacity:1;stroke-width:0.2;">
@@ -2100,8 +2101,8 @@ var database_data = {
 					x="12"
 					y="0"
 				/>
-			</g>
-		</g>
+          </g>
+        </g>
 		<g
 			style="display:inline;fill-opacity:1;stroke-width:0.2;"
 			id="COLOR-4-GROUP">
@@ -2150,8 +2151,8 @@ var database_data = {
 					x="12.4"
 					y="0"
 				/>
-			</g>
-		</g>
+          </g>
+        </g>
 		<g
 			id="COLOR-5-GROUP"
 			style="display:inline;fill-opacity:1;stroke-width:0.2;">
@@ -2200,8 +2201,8 @@ var database_data = {
 					x="12.8"
 					y="0"
 				/>
-			</g>
-		</g>
+          </g>
+        </g>
 		<ellipse
 			id="SHORTNAME-CUTOUT"
 			style="display:inline;fill:#ffffff;fill-opacity:1;stroke-width:0.3"
@@ -2213,221 +2214,221 @@ var database_data = {
 			id="CODE-SHORTNAME"
 			y="12"
 			x="3.6"
-			style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.4px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2"
+          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:1.4px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2"
 			xml:space="preserve"><tspan
 				id="ACTUAL-SHORTNAME"
 				sodipodi:role="line">INVALID</tspan></text>
-	</g>
-</svg>
-</div>
+      </g>
+    </svg>
+  </div>
 
-<script>
-var blurlpre = "https://www.bricklink.com/v2/catalog/catalogitem.page?P=";
-var colorcodes = ['G','R','B','L','P','V','Y','T'];
-// As recommended by EntireStatus2007
-var colorSVGrgb = ['229551','cb2129','0000ff','aed252','d166a7','9b78b5','f9dc2a','1baaa3'];
+  <script>
+    var blurlpre = "https://www.bricklink.com/v2/catalog/catalogitem.page?P=";
+    var colorcodes = ['G', 'R', 'B', 'L', 'P', 'V', 'Y', 'T'];
+    // As recommended by EntireStatus2007
+    var colorSVGrgb = ['229551', 'cb2129', '0000ff', 'aed252', 'd166a7', '9b78b5', 'f9dc2a', '1baaa3'];
 
-function index_db_by_code() {
-	if ( database_data.hasOwnProperty('codeindex') && database_data.hasOwnProperty('idkindex') ) { return; }
+    function index_db_by_code() {
+      if (database_data.hasOwnProperty('codeindex') && database_data.hasOwnProperty('idkindex')) { return; }
 
-	database_data['codeindex'] = {};
-	for (idx in database_data['codes']) {
-		var code = database_data['codes'][idx];
-		database_data['codeindex'][code['code']] = idx;
-	}
-	database_data['idkindex'] = {};
-	for (idx in database_data['unidentified']) {
-		var code = database_data['unidentified'][idx];
-		database_data['idkindex'][code['code']] = idx;
-	}
-}
+      database_data['codeindex'] = {};
+      for (idx in database_data['codes']) {
+        var code = database_data['codes'][idx];
+        database_data['codeindex'][code['code']] = idx;
+      }
+      database_data['idkindex'] = {};
+      for (idx in database_data['unidentified']) {
+        var code = database_data['unidentified'][idx];
+        database_data['idkindex'][code['code']] = idx;
+      }
+    }
 
-function create_svg_code(code) {
-	var codetitle = "";
+    function create_svg_code(code) {
+      var codetitle = "";
 
-	if ( !test_code_rules(code) ) {
-		console.log(code);
-		codetitle = "INVALID";
-	}
+      if (!test_code_rules(code)) {
+        console.log(code);
+        codetitle = "INVALID";
+      }
 
-	var code_svg = clone_SVG_template_from_DOM("code_template");
-	code_svg.style.display = "block";
-	code_svg.id="scanner_code_"+code;
+      var code_svg = clone_SVG_template_from_DOM("code_template");
+      code_svg.style.display = "block";
+      code_svg.id = "scanner_code_" + code;
 
-	// SVGSCGElement has to be written before it can be modified, apparently
-	// NOPE. Apparently getElementByID just doesn't work
-	// document.getElementById("code_block_"+code).appendChild(code_svg);
-	// code_svg = document.getElementById("scanner_code_"+code);
+      // SVGSCGElement has to be written before it can be modified, apparently
+      // NOPE. Apparently getElementByID just doesn't work
+      // document.getElementById("code_block_"+code).appendChild(code_svg);
+      // code_svg = document.getElementById("scanner_code_"+code);
 
-	index_db_by_code()
-	if ( codetitle != "INVALID" ) {
-		var codearray = code.split("");
-		for ( i=0; i<5; i++) {
-			var barcolor = colorSVGrgb[colorcodes.indexOf(codearray[i])];
-			color_group_id = "COLOR-"+(i+1)+"-FILL";
-//			color_group = code_svg.getElementById(color_group_id);
-			color_group = walk_SVG_DOM_for_id_because_IDK_why_getElementById_doesnt_work(code_svg, color_group_id);
+      index_db_by_code()
+      if (codetitle != "INVALID") {
+        var codearray = code.split("");
+        for (i = 0; i < 5; i++) {
+          var barcolor = colorSVGrgb[colorcodes.indexOf(codearray[i])];
+          color_group_id = "COLOR-" + (i + 1) + "-FILL";
+          //			color_group = code_svg.getElementById(color_group_id);
+          color_group = walk_SVG_DOM_for_id_because_IDK_why_getElementById_doesnt_work(code_svg, color_group_id);
 
-			color_group.style.fill="#"+barcolor;
+          color_group.style.fill = "#" + barcolor;
 
-//			nametag = code_svg.getElementById("ACTUAL-SHORTNAME");
-			var nametag = walk_SVG_DOM_for_id_because_IDK_why_getElementById_doesnt_work(code_svg, "ACTUAL-SHORTNAME");
-			var name_label = "x_"+code+"_";
-			if ( database_data['codeindex'][code] ) {
-				if ( database_data['codes'][database_data['codeindex'][code]].hasOwnProperty('label') ) {
-					 name_label = database_data['codes'][database_data['codeindex'][code]]['label'];
-				} else {
-					nametag = "_NO_LBL_";
-				}
-			} else if ( database_data['idkindex'][code] ) {
-				if ( database_data['unidentified'][database_data['idkindex'][code]].hasOwnProperty('label') ) {
-					 name_label = database_data['unidentified'][database_data['idkindex'][code]]['label'];
-				} else {
-					nametag = "_NO_LBL_";
-				}
-			}
-			nametag.innerHTML = name_label;
-		}
-	}
-	return code_svg;
-}
+          //			nametag = code_svg.getElementById("ACTUAL-SHORTNAME");
+          var nametag = walk_SVG_DOM_for_id_because_IDK_why_getElementById_doesnt_work(code_svg, "ACTUAL-SHORTNAME");
+          var name_label = "x_" + code + "_";
+          if (database_data['codeindex'][code]) {
+            if (database_data['codes'][database_data['codeindex'][code]].hasOwnProperty('label')) {
+              name_label = database_data['codes'][database_data['codeindex'][code]]['label'];
+            } else {
+              nametag = "_NO_LBL_";
+            }
+          } else if (database_data['idkindex'][code]) {
+            if (database_data['unidentified'][database_data['idkindex'][code]].hasOwnProperty('label')) {
+              name_label = database_data['unidentified'][database_data['idkindex'][code]]['label'];
+            } else {
+              nametag = "_NO_LBL_";
+            }
+          }
+          nametag.innerHTML = name_label;
+        }
+      }
+      return code_svg;
+    }
 
-function colorized_html_for_code(code) {
-	var codearray = code.split("");
-	var rh = "";
+    function colorized_html_for_code(code) {
+      var codearray = code.split("");
+      var rh = "";
 
-	if ( !test_code_rules(code) ) {
-		rh = rh + "INVALID CODE<BR>";
-	} else {
-		rh = rh + "<input type='checkbox' style='block' value='"+code+"'>";
-	}
+      if (!test_code_rules(code)) {
+        rh = rh + "INVALID CODE<BR>";
+      } else {
+        rh = rh + "<input type='checkbox' style='block' value='" + code + "'>";
+      }
 
-	rh = rh + codearray.reduce( (total, currentValue) => {
-		return total+"<span class=\""+currentValue+"\">"+currentValue+"</span>"
-	},"" );
-	return rh;
-}
+      rh = rh + codearray.reduce((total, currentValue) => {
+        return total + "<span class=\"" + currentValue + "\">" + currentValue + "</span>"
+      }, "");
+      return rh;
+    }
 
-function test_code_rules(code) {
-	if (!code) {
-		return false;
-	}
+    function test_code_rules(code) {
+      if (!code) {
+        return false;
+      }
 
-	// Basic syntax
-	// Only five
-	if (code.length != 5) {
-		return false;
-	}
-	// All uppercase
-	if ( code.toUpperCase().localeCompare(code) != 0 ) {
-		return false;
-	}
+      // Basic syntax
+      // Only five
+      if (code.length != 5) {
+        return false;
+      }
+      // All uppercase
+      if (code.toUpperCase().localeCompare(code) != 0) {
+        return false;
+      }
 
-	// Starts with GR
-	if ( ! (code.startsWith("GR") || code.startsWith("BR")) ) {
-		return false;
-	}
+      // Starts with GR
+      if (!(code.startsWith("GR") || code.startsWith("BR"))) {
+        return false;
+      }
 
-	// Valid color code characters
-	var codearray = code.split("");
-	if ( (codearray.filter((c) => colorcodes.indexOf(c)+1)).length != 5 ) {
-		return false;
-	}
+      // Valid color code characters
+      var codearray = code.split("");
+      if ((codearray.filter((c) => colorcodes.indexOf(c) + 1)).length != 5) {
+        return false;
+      }
 
-	// Colors do not repeat
-	var used_colors = [ ];
-	if ( codearray.reduce( (total, currentValue) => {
-			if ( used_colors.indexOf(currentValue) == -1 ){ used_colors.push(currentValue); return total; }
-			else { return total+1; }
-		},0 ) != 0 ) {
-		return false;
-	}
+      // Colors do not repeat
+      var used_colors = [];
+      if (codearray.reduce((total, currentValue) => {
+        if (used_colors.indexOf(currentValue) == -1) { used_colors.push(currentValue); return total; }
+        else { return total + 1; }
+      }, 0) != 0) {
+        return false;
+      }
 
-	return true;
-}
+      return true;
+    }
 
-function write_code_div(code) {
-	document.write("<div class='codeblock'>");
-	document.write("<div class='code_svg_caption' id='code_block_"+code['code']+"'>");
-	document.write("<b>"+colorized_html_for_code(code['code'])+"</b>")
-	document.write("</div><div class='code_description'><ul>");
+    function write_code_div(code) {
+      document.write("<div class='codeblock'>");
+      document.write("<div class='code_svg_caption' id='code_block_" + code['code'] + "'>");
+      document.write("<b>" + colorized_html_for_code(code['code']) + "</b>")
+      document.write("</div><div class='code_description'><ul>");
 
-	for (bidx in code['blpns']) {
-		var blpn = code['blpns'][bidx]
-		document.write("<li><a href='"+blurlpre+blpn['blpn']+"'>"+blpn['name']+"</a></li>");
-	}
+      for (bidx in code['blpns']) {
+        var blpn = code['blpns'][bidx]
+        document.write("<li><a href='" + blurlpre + blpn['blpn'] + "'>" + blpn['name'] + "</a></li>");
+      }
 
-	if ( code.hasOwnProperty("note") ) {
-		document.write(code['note']);
-	}
-	document.write("</ul></div>");
-	document.write("</div>");
+      if (code.hasOwnProperty("note")) {
+        document.write(code['note']);
+      }
+      document.write("</ul></div>");
+      document.write("</div>");
 
-	// code_block_x has to exist before we can stuff an object in it
-	var svg_code = create_svg_code(code['code']);
-	document.getElementById("code_block_"+code['code']).appendChild(svg_code);
-}
+      // code_block_x has to exist before we can stuff an object in it
+      var svg_code = create_svg_code(code['code']);
+      document.getElementById("code_block_" + code['code']).appendChild(svg_code);
+    }
 
-function write_code_divs() {
-	for (idx in database_data['codes']) {
-		write_code_div(database_data['codes'][idx]);
-	}
-}
+    function write_code_divs() {
+      for (idx in database_data['codes']) {
+        write_code_div(database_data['codes'][idx]);
+      }
+    }
 
-function write_undeciphered_list() {
-	for (idx in database_data['undeciphered']) {
-		var brick = database_data['undeciphered'][idx]
-		document.write("<li>");
-		if ( brick.hasOwnProperty("codeguess") ) {
-			document.write(colorized_html_for_code(brick['codeguess'])+" : ")
-		}
-		document.write("<a href='"+blurlpre+brick['blpn']+"'>"+brick['name']+"</a></li>");
-		if ( brick.hasOwnProperty("note") ) {
-			document.write(brick['note']);
-		}
-	}
-}
+    function write_undeciphered_list() {
+      for (idx in database_data['undeciphered']) {
+        var brick = database_data['undeciphered'][idx]
+        document.write("<li>");
+        if (brick.hasOwnProperty("codeguess")) {
+          document.write(colorized_html_for_code(brick['codeguess']) + " : ")
+        }
+        document.write("<a href='" + blurlpre + brick['blpn'] + "'>" + brick['name'] + "</a></li>");
+        if (brick.hasOwnProperty("note")) {
+          document.write(brick['note']);
+        }
+      }
+    }
 
-function write_unidentified_list() {
-	for (idx in database_data['unidentified']) {
-		var brick = database_data['unidentified'][idx]
-		document.write("<li>");
-		document.write(colorized_html_for_code(brick['code'])+" : ")
-		if ( brick.hasOwnProperty("label") ) {
-			if ( brick['label'].length > 8 ) {
-				document.write("___PROPOSED_LABEL_TOO_LONG___ : ");
-			} else {
-				document.write(brick['label']+" : ");
-			}
-		}
-		document.write(brick['note']);
-		document.write("</li>");
-	}
-}
+    function write_unidentified_list() {
+      for (idx in database_data['unidentified']) {
+        var brick = database_data['unidentified'][idx]
+        document.write("<li>");
+        document.write(colorized_html_for_code(brick['code']) + " : ")
+        if (brick.hasOwnProperty("label")) {
+          if (brick['label'].length > 8) {
+            document.write("___PROPOSED_LABEL_TOO_LONG___ : ");
+          } else {
+            document.write(brick['label'] + " : ");
+          }
+        }
+        document.write(brick['note']);
+        document.write("</li>");
+      }
+    }
 
-function check_valid_code_checkboxes() {
-	for ( let thischeck of document.querySelectorAll("input[type=checkbox]") ) {
-		if ( database_data['codeindex'][thischeck.value] || database_data['idkindex'][thischeck.value] ) {
-			thischeck.checked = true;
-		}
-	}
-}
+    function check_valid_code_checkboxes() {
+      for (let thischeck of document.querySelectorAll("input[type=checkbox]")) {
+        if (database_data['codeindex'][thischeck.value] || database_data['idkindex'][thischeck.value]) {
+          thischeck.checked = true;
+        }
+      }
+    }
 
-function clear_checkboxes() {
-	for ( let thischeck of document.querySelectorAll("input[type=checkbox]") ) {
-		thischeck.checked = false;
-	}
-}
+    function clear_checkboxes() {
+      for (let thischeck of document.querySelectorAll("input[type=checkbox]")) {
+        thischeck.checked = false;
+      }
+    }
 
-function create_codelist_from_checkboxes() {
-	var retval = [];
-	for ( let thischeck of document.querySelectorAll("input[type=checkbox]") ) {
-		if ( thischeck.checked ) {
-			retval.push(thischeck.value);
-		}
-	}
-	return retval;
-}
+    function create_codelist_from_checkboxes() {
+      var retval = [];
+      for (let thischeck of document.querySelectorAll("input[type=checkbox]")) {
+        if (thischeck.checked) {
+          retval.push(thischeck.value);
+        }
+      }
+      return retval;
+    }
 
 function pop_print_window(codelist) {
 	create_codelist_from_checkboxes()
@@ -2443,190 +2444,223 @@ function pop_print_window(codelist) {
 	}
 }
 
-function brute_force_codes() {
-	// Collect known codes
-	var known_codes = [];
-	var unknown_codes = [];
-	for (idx in database_data['codes']) {
-		known_codes.push(database_data['codes'][idx]['code']);
-	}
-	for (idx in database_data['undeciphered']) {
-		if ( database_data['undeciphered'][idx].hasOwnProperty('codeguess') ) {
-			known_codes.push(database_data['undeciphered'][idx]['codeguess']);
-		}
-	}
-	for (idx in database_data['unidentified']) {
-		known_codes.push(database_data['unidentified'][idx]['code']);
-	}
+    function pop_print_window_extended(codelist) {
+      create_codelist_from_checkboxes()
+      var svgwin = window.open("", "PrintSVGCodes_ex", "width=520, height=320, location=no, menubar=no, toolbar=no, status=no");
+      if (svgwin) {
+        for (code in codelist) {
+          var code_svg = create_svg_code(codelist[code])
+          code_svg.style.display = "inline";
+          var div = document.createElement('div');
+          var p = document.createElement('p');
+          div.style = "display: inline-grid;justify-content: center;justify-items: center;border: black;border-width: thin;border-color: black;border-style: dotted;";
+          p.style.display = "inline";
+          div.appendChild(code_svg);
+          var n=document.createTextNode("--");
+          console.info("codelist[code]:",codelist[code]);
+          if (database_data.codes[code]) {
+            n=document.createTextNode(database_data.codes[code].blpns[0].name);
+          } else if (database_data.idkindex[codelist[code]]) {
+            var idkidx=database_data.idkindex[codelist[code]];
+            n=document.createTextNode(database_data.unidentified[idkidx].note);
+          }
+          p.appendChild(n);
+          div.appendChild(p);
+          svgwin.document.body.appendChild(div);
+        }
+      } else {
+        alert("Unable to open window to print SVG codes");
+      }
+    }
 
-	var ccode = ['G','R'];
-	var remainingcolorcodes = ['B','L','P','V','Y','T'];
-	var codespace = remainingcolorcodes.length;
-	var count = 0;
-	for ( c1=0; c1<codespace; c1++) {
-		var color1 = remainingcolorcodes[c1];
-		for ( c2=0; c2<codespace; c2++) {
-			var color2 = remainingcolorcodes[c2];
-			for ( c3=0; c3<codespace; c3++) {
-				var test_code = ccode.concat([color1, color2, remainingcolorcodes[c3]]);
-				test_code = test_code.join("");
-				if (test_code_rules(test_code)) {
-					count++;
-					if ( known_codes.indexOf(test_code) == -1 ) {
-						unknown_codes.push(test_code);
-					}
+    function brute_force_codes() {
+      // Collect known codes
+      var known_codes = [];
+      var unknown_codes = [];
+      for (idx in database_data['codes']) {
+        known_codes.push(database_data['codes'][idx]['code']);
+      }
+      for (idx in database_data['undeciphered']) {
+        if (database_data['undeciphered'][idx].hasOwnProperty('codeguess')) {
+          known_codes.push(database_data['undeciphered'][idx]['codeguess']);
+        }
+      }
+      for (idx in database_data['unidentified']) {
+        known_codes.push(database_data['unidentified'][idx]['code']);
+      }
 
-				}
-			}
-		}
-	}
+      var ccode = ['G', 'R'];
+      var remainingcolorcodes = ['B', 'L', 'P', 'V', 'Y', 'T'];
+      var codespace = remainingcolorcodes.length;
+      var count = 0;
+      for (c1 = 0; c1 < codespace; c1++) {
+        var color1 = remainingcolorcodes[c1];
+        for (c2 = 0; c2 < codespace; c2++) {
+          var color2 = remainingcolorcodes[c2];
+          for (c3 = 0; c3 < codespace; c3++) {
+            var test_code = ccode.concat([color1, color2, remainingcolorcodes[c3]]);
+            test_code = test_code.join("");
+            if (test_code_rules(test_code)) {
+              count++;
+              if (known_codes.indexOf(test_code) == -1) {
+                unknown_codes.push(test_code);
+              }
 
-	// Since BRGxy can be read as GRByx when flipped, account for "duplicates"
-	var ccode = ['B','R'];
-	var remainingcolorcodes = ['G','L','P','V','Y','T'];
-	var codespace = remainingcolorcodes.length;
-	var count = 0;
-	for ( c1=0; c1<codespace; c1++) {
-		var color1 = remainingcolorcodes[c1];
-		var test_grb_space = false;
-		if (color1 == 'G') {
-			test_grb_space = true;
-		}
-		for ( c2=0; c2<codespace; c2++) {
-			var color2 = remainingcolorcodes[c2];
-			for ( c3=0; c3<codespace; c3++) {
-				var test_code = ccode.concat([color1, color2, remainingcolorcodes[c3]]);
-				test_code = test_code.join("");
-				if (test_code_rules(test_code)) {
-					if (test_grb_space) {
-						var reversed_code = ['G','R','B',remainingcolorcodes[c3],color2];
-						reversed_code = reversed_code.join("");
-						if (test_code_rules(reversed_code)) {
-							if (!( known_codes.indexOf(reversed_code) == -1 && unknown_codes.indexOf(reversed_code) == -1 )) {
-								// Ignore it
-								// console.log("Ignoring "+test_code+" because it is "+reversed_code+" which is already in our lists")
-								continue;
-							}
-						}
-					}
-					count++;
-					if ( known_codes.indexOf(test_code) == -1 ) {
-						unknown_codes.push(test_code);
-					}
-				}
-			}
-		}
-	}
+            }
+          }
+        }
+      }
 
-	return {
-		"known": known_codes,
-		"unknown": unknown_codes
-	};
-}
+      // Since BRGxy can be read as GRByx when flipped, account for "duplicates"
+      var ccode = ['B', 'R'];
+      var remainingcolorcodes = ['G', 'L', 'P', 'V', 'Y', 'T'];
+      var codespace = remainingcolorcodes.length;
+      var count = 0;
+      for (c1 = 0; c1 < codespace; c1++) {
+        var color1 = remainingcolorcodes[c1];
+        var test_grb_space = false;
+        if (color1 == 'G') {
+          test_grb_space = true;
+        }
+        for (c2 = 0; c2 < codespace; c2++) {
+          var color2 = remainingcolorcodes[c2];
+          for (c3 = 0; c3 < codespace; c3++) {
+            var test_code = ccode.concat([color1, color2, remainingcolorcodes[c3]]);
+            test_code = test_code.join("");
+            if (test_code_rules(test_code)) {
+              if (test_grb_space) {
+                var reversed_code = ['G', 'R', 'B', remainingcolorcodes[c3], color2];
+                reversed_code = reversed_code.join("");
+                if (test_code_rules(reversed_code)) {
+                  if (!(known_codes.indexOf(reversed_code) == -1 && unknown_codes.indexOf(reversed_code) == -1)) {
+                    // Ignore it
+                    // console.log("Ignoring "+test_code+" because it is "+reversed_code+" which is already in our lists")
+                    continue;
+                  }
+                }
+              }
+              count++;
+              if (known_codes.indexOf(test_code) == -1) {
+                unknown_codes.push(test_code);
+              }
+            }
+          }
+        }
+      }
 
-function write_brute_force_codespace() {
-	document.write("Brute forcing the codespace...<br>");
-	// Collect known codes
-	var known_codes = [ ];
-	var known_code_names = [];
-	for (idx in database_data['codes']) {
-		known_codes.push(database_data['codes'][idx]['code']);
-		known_code_names.push(database_data['codes'][idx]['blpns'][0]['name']);
-	}
+      return {
+        "known": known_codes,
+        "unknown": unknown_codes
+      };
+    }
 
-	var ccode = ['G','R'];
-	var remainingcolorcodes = ['B','L','P','V','Y','T'];
-	var codespace = remainingcolorcodes.length;
-	var count = 0;
-	for ( c1=0; c1<codespace; c1++) {
-		var color1 = remainingcolorcodes[c1];
-		for ( c2=0; c2<codespace; c2++) {
-			var color2 = remainingcolorcodes[c2];
-			for ( c3=0; c3<codespace; c3++) {
-				var test_code = ccode.concat([color1, color2, remainingcolorcodes[c3]]);
-				test_code = test_code.join("");
-				if (test_code_rules(test_code)) {
-					count++;
-					document.write(colorized_html_for_code(test_code))
-					var used_index = known_codes.indexOf(test_code);
-					if ( used_index != -1 ) {
-						document.write(" "+known_code_names[used_index]+"<br>");
-					} else {
-						unknown_codes.push(test_code);
-						document.write("<br>");
-					}
-				}
-			}
-		}
-	}
-	document.write("<br>Found "+count+" valid codes.<br>"+known_codes.length+" used.<br>"+(count-known_codes.length)+" unused codes")
-}
+    function write_brute_force_codespace() {
+      document.write("Brute forcing the codespace...<br>");
+      // Collect known codes
+      var known_codes = [];
+      var known_code_names = [];
+      for (idx in database_data['codes']) {
+        known_codes.push(database_data['codes'][idx]['code']);
+        known_code_names.push(database_data['codes'][idx]['blpns'][0]['name']);
+      }
 
-// Apparently cloning objects you have handles to is hard, but cloning DOM nodes is easy! (SVGSVGElement)
-function clone_SVG_template_from_DOM(template_id) {
-	var code_svg = document.getElementById(template_id);
-	code_svg = code_svg.firstElementChild.cloneNode(true);
-	return code_svg;
-}
+      var ccode = ['G', 'R'];
+      var remainingcolorcodes = ['B', 'L', 'P', 'V', 'Y', 'T'];
+      var codespace = remainingcolorcodes.length;
+      var count = 0;
+      for (c1 = 0; c1 < codespace; c1++) {
+        var color1 = remainingcolorcodes[c1];
+        for (c2 = 0; c2 < codespace; c2++) {
+          var color2 = remainingcolorcodes[c2];
+          for (c3 = 0; c3 < codespace; c3++) {
+            var test_code = ccode.concat([color1, color2, remainingcolorcodes[c3]]);
+            test_code = test_code.join("");
+            if (test_code_rules(test_code)) {
+              count++;
+              document.write(colorized_html_for_code(test_code))
+              var used_index = known_codes.indexOf(test_code);
+              if (used_index != -1) {
+                document.write(" " + known_code_names[used_index] + "<br>");
+              } else {
+                unknown_codes.push(test_code);
+                document.write("<br>");
+              }
+            }
+          }
+        }
+      }
+      document.write("<br>Found " + count + " valid codes.<br>" + known_codes.length + " used.<br>" + (count - known_codes.length) + " unused codes")
+    }
 
-// I mean, what the hell
-// https://stackoverflow.com/questions/42798992/element-getelementbyid-not-working
-function walk_SVG_DOM_for_id_because_IDK_why_getElementById_doesnt_work(svg, search_id) {
-	if ( svg.children ) {
-		for (let element of svg.children) {
-			if ( element.id == search_id ) {
-				return element;
-			}
+    // Apparently cloning objects you have handles to is hard, but cloning DOM nodes is easy! (SVGSVGElement)
+    function clone_SVG_template_from_DOM(template_id) {
+      var code_svg = document.getElementById(template_id);
+      code_svg = code_svg.firstElementChild.cloneNode(true);
+      return code_svg;
+    }
 
-			var found_element = walk_SVG_DOM_for_id_because_IDK_why_getElementById_doesnt_work(element, search_id);
-			if ( found_element ) {
-				return found_element;
-			}
-		}
-	}
-	return null;
-}
+    // I mean, what the hell
+    // https://stackoverflow.com/questions/42798992/element-getelementbyid-not-working
+    function walk_SVG_DOM_for_id_because_IDK_why_getElementById_doesnt_work(svg, search_id) {
+      if (svg.children) {
+        for (let element of svg.children) {
+          if (element.id == search_id) {
+            return element;
+          }
 
-</script>
+          var found_element = walk_SVG_DOM_for_id_because_IDK_why_getElementById_doesnt_work(element, search_id);
+          if (found_element) {
+            return found_element;
+          }
+        }
+      }
+      return null;
+    }
 
-<div id='codelist'>
-<script>write_code_divs();</script>
-</div>
+  </script>
 
-<h2>Known Bricks (with & without code guesses that work)</h2>
-<i>Codes listed here are guesses.  Photos on Bricklink are too blurry to verify.</i>
-<ul>
-<script>write_undeciphered_list();</script>
-</ul>
+  <div id='codelist'>
+    <script>write_code_divs();</script>
+  </div>
 
-<h2>Unidentified, working codes</h2>
-<i>Codes listed here do something.  Not being inventoried on Bricklink prevents their promotion. Set numbers and colors confirmed in the app.</i>
-<ul>
-<script>write_unidentified_list();</script>
-</ul>
+  <h2>Known Bricks (with & without code guesses that work)</h2>
+  <i>Codes listed here are guesses. Photos on Bricklink are too blurry to verify.</i>
+  <ul>
+    <script>write_undeciphered_list();</script>
+  </ul>
 
-<h2>Not-working*, but valid codes</h2>
-<i>* Since last I manually checked (App version 2.5.4)</i>
-<ul>
-<script>
-var unknown_codes = brute_force_codes()['unknown'];
-for (let curucode of unknown_codes) {
-	document.write("<li>"+colorized_html_for_code(curucode)+"</li>");
-}
-</script>
-</ul>
-<hr>
-<h2>Printing</h2>
-<a href="javascript:void(0)" onClick="check_valid_code_checkboxes()">Check all working codes</a><br><br>
-<a href="javascript:void(0)" onClick="clear_checkboxes()">Clear checked codes</a><br><br>
-Printing will pop open an window and write the selected SVGs to it.
-<ul>
-<li>Print on photo paper for best results
-<li>45 codes will fit on 4x6 inch photo paper (9 across the 6" span, five down the 4")
-</ul>
-<a href="javascript:void(0)" onClick="pop_print_window(create_codelist_from_checkboxes())">Print checked codes</a><br><br>
-<hr>
-<i>Copyright (c) 2021, mutesplash</i>
+  <h2>Unidentified, working codes</h2>
+  <i>Codes listed here do something. Not being inventoried on Bricklink prevents their promotion. Set numbers and colors
+    confirmed in the app.</i>
+  <ul>
+    <script>write_unidentified_list();</script>
+  </ul>
+
+  <h2>Not-working*, but valid codes</h2>
+  <i>* Since last I manually checked (App version 2.5.4)</i>
+  <ul>
+    <script>
+      var unknown_codes = brute_force_codes()['unknown'];
+      for (let curucode of unknown_codes) {
+        document.write("<li>" + colorized_html_for_code(curucode) + "</li>");
+      }
+    </script>
+  </ul>
+  <hr>
+  <h2>Printing</h2>
+  <a href="javascript:void(0)" onClick="check_valid_code_checkboxes()">Check all working codes</a><br><br>
+  <a href="javascript:void(0)" onClick="clear_checkboxes()">Clear checked codes</a><br><br>
+  Printing will pop open an window and write the selected SVGs to it.
+  <ul>
+    <li>Print on photo paper for best results
+    <li>45 codes will fit on 4x6 inch photo paper (9 across the 6" span, five down the 4")
+  </ul>
+  <a href="javascript:void(0)" onClick="pop_print_window(create_codelist_from_checkboxes())">Print checked
+    codes</a><br>
+    <a href="javascript:void(0)" onClick="pop_print_window_extended(create_codelist_from_checkboxes())">Print checked
+    codes with more info</a><br><br>
+  <hr>
+  <i>Copyright (c) 2021, mutesplash</i>
 </body>
-</html>
 
+</html>
